@@ -17,6 +17,8 @@ sync_process = None
 def is_note_app_running():
     """
     Return True if the Scrble Ink app seems to be running.
+    Checks for the UWP app by looking for ApplicationFrameHost with the app package name,
+    or for any process containing 'scrble' in its command line.
     """
     for proc in psutil.process_iter(["name", "cmdline"]):
         try:
@@ -26,7 +28,11 @@ def is_note_app_running():
         except (psutil.NoSuchProcess, psutil.AccessDenied):
             continue
 
-        if NOTE_APP_NAME.lower() in name.lower():
+        # Check for ApplicationFrameHost (UWP host) with scrble/inknotespro in command line
+        if name.lower() == "applicationframehost.exe" and ("scrble" in cmd.lower() or "inknotespro" in cmd.lower()):
+            return True
+        # Also check for direct process names containing 'scrble'
+        if NOTE_APP_KEYWORD in name.lower():
             return True
         if NOTE_APP_KEYWORD in cmd.lower():
             return True
@@ -37,6 +43,18 @@ def main():
     global sync_process
 
     print("[Monitor] Waiting for Scrble Ink to launch...")
+    print(f"[DEBUG] Python path: {PYTHON_PATH}")
+    print(f"[DEBUG] Sync script: {SYNC_SCRIPT}")
+
+    # Verify paths on startup
+    if not os.path.exists(PYTHON_PATH):
+        print(f"[ERROR] Python not found at: {PYTHON_PATH}")
+        print("[ERROR] Please check the PYTHON_PATH in the script")
+        return
+    if not os.path.exists(SYNC_SCRIPT):
+        print(f"[ERROR] Sync script not found at: {SYNC_SCRIPT}")
+        print("[ERROR] Please check the SYNC_SCRIPT in the script")
+        return
 
     while True:
         app_running = is_note_app_running()
@@ -49,25 +67,12 @@ def main():
                 else:
                     print("[Monitor] Scrble Ink detected. Starting sync script...")
 
-                # Verify paths
-                if not os.path.exists(PYTHON_PATH):
-                    print("[ERROR] Python not found:", PYTHON_PATH)
-                    break
-                if not os.path.exists(SYNC_SCRIPT):
-                    print("[ERROR] Sync script not found:", SYNC_SCRIPT)
-                    break
-
                 command = [PYTHON_PATH, SYNC_SCRIPT]
                 print("[DEBUG] Launching:", " ".join(command))
 
                 try:
-                    # IMPORTANT CHANGE:
-                    #  - No stdout/stderr=PIPE -> child inherits console / redirection.
-                    #  - No manual decoding -> no UTF-8 vs cp1252 crash.
                     creationflags = 0
                     if sys.platform == "win32" and hasattr(subprocess, "CREATE_NO_WINDOW"):
-                        # For PyInstaller --console builds you can use 0 (show console),
-                        # for silent background builds you can keep CREATE_NO_WINDOW.
                         creationflags = 0
 
                     sync_process = subprocess.Popen(

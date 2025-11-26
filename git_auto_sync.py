@@ -149,7 +149,8 @@ class GitHandler(FileSystemEventHandler):
     def _handle(self, src_path, event_type):
         global change_detected
 
-        if ".git" in src_path:
+        # Skip .git directory and other system files
+        if ".git" in src_path or ".vscode" in src_path or "monitor.log" in src_path:
             return
 
         rel = os.path.relpath(src_path, REPO_PATH)
