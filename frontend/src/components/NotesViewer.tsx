@@ -65,6 +65,8 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   const [loading, setLoading] = createSignal(true);
   const [imageIndex, setImageIndex] = createSignal(0);
   const [allImages, setAllImages] = createSignal<FileItem[]>([]);
+  const [zoom, setZoom] = createSignal(100);
+  const [fitMode, setFitMode] = createSignal<'fit' | 'width' | 'actual'>('width');
 
   // Fetch directory contents from GitHub API
   const fetchDirectoryContents = async (path: string) => {
