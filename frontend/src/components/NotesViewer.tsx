@@ -194,8 +194,8 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   };
 
   const handleTouchStart = (e: TouchEvent) => {
-    if (e.touches.length === 2) {
-      // Pinch start
+    if (e.touches.length === 2 && !zoomLocked()) {
+      // Pinch start (only if zoom not locked)
       e.preventDefault();
       setInitialPinchDistance(getDistance(e.touches));
       setInitialZoom(zoom());
@@ -206,7 +206,7 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   };
 
   const handleTouchMove = (e: TouchEvent) => {
-    if (e.touches.length === 2 && initialPinchDistance()) {
+    if (e.touches.length === 2 && initialPinchDistance() && !zoomLocked()) {
       e.preventDefault();
       const currentDistance = getDistance(e.touches);
       const scale = currentDistance / initialPinchDistance()!;
