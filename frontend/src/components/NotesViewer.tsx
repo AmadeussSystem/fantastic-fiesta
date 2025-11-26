@@ -65,8 +65,11 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   const [loading, setLoading] = createSignal(true);
   const [imageIndex, setImageIndex] = createSignal(0);
   const [allImages, setAllImages] = createSignal<FileItem[]>([]);
-  const [zoom, setZoom] = createSignal(100);
+  const [zoom, setZoom] = createSignal(150); // Default 150% for mobile readability
   const [fitMode, setFitMode] = createSignal<'fit' | 'width' | 'actual'>('width');
+  
+  // Ref to image scroll container for resetting position
+  let scrollContainerRef: HTMLDivElement | undefined;
 
   // Fetch directory contents from GitHub API
   const fetchDirectoryContents = async (path: string) => {
@@ -135,6 +138,15 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
     
     setImageIndex(newIndex);
     props.onFileClick(images[newIndex]);
+    
+    // Reset scroll position to top-center when navigating
+    if (scrollContainerRef) {
+      scrollContainerRef.scrollTop = 0;
+      // Center horizontally
+      const scrollWidth = scrollContainerRef.scrollWidth;
+      const clientWidth = scrollContainerRef.clientWidth;
+      scrollContainerRef.scrollLeft = (scrollWidth - clientWidth) / 2;
+    }
   };
 
   // Touch swipe state for navigation
@@ -399,6 +411,7 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
 
           {/* Image */}
           <div 
+            ref={scrollContainerRef}
             class="w-full h-full overflow-auto modal-scroll"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
