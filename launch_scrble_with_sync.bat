@@ -1,8 +1,11 @@
 @echo off
-REM Launch Scrble Ink
+REM Launch Scrble Ink (UWP app)
 start "" "shell:AppsFolder\10511ClaudiaWey.inknotespro_9n0kwq747cbjy!App"
 
-REM Launch monitor with correct working directory and log output
-start "" /D "C:\Users\lone\Documents\fantastic-fiesta\dist" monitor_scrble_sync.exe > "C:\Users\lone\Documents\fantastic-fiesta\monitor.log" 2>&1
+REM Launch monitor in background, writing logs to monitor.log
+REM /MIN = start minimized; remove it if you want to see the window
+start "" /MIN cmd /c ^
+"cd /d C:\Users\lone\Documents\fantastic-fiesta\dist ^
+ && monitor_scrble_sync.exe >> C:\Users\lone\Documents\fantastic-fiesta\monitor.log 2>&1"
 
-REM Optional: pause  # Uncomment for testing to keep window open
+exit /b
