@@ -159,10 +159,10 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   return (
     <div class="h-full">
       {/* Header */}
-      <div class="sticky top-16 z-30 glass border-b border-white/5 px-6 py-4">
-        <div class="flex items-center justify-between">
+      <div class="sticky top-16 z-30 glass border-b border-white/5 px-3 sm:px-6 py-3 sm:py-4">
+        <div class="flex items-center justify-between gap-2">
           {/* Breadcrumbs */}
-          <div class="flex items-center gap-2 text-sm overflow-x-auto">
+          <div class="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm overflow-x-auto flex-1 min-w-0">
             <For each={props.breadcrumbs}>
               {(crumb, index) => (
                 <>
@@ -185,8 +185,8 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
           </div>
 
           {/* View mode toggle */}
-          <div class="flex items-center gap-2">
-            <span class="text-xs text-gray-500 mr-2">{items().length} items</span>
+          <div class="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+            <span class="text-xs text-gray-500 mr-1 sm:mr-2 hidden sm:inline">{items().length} items</span>
             <button
               class={`p-2 rounded-lg transition-colors ${
                 props.viewMode === 'grid' ? 'bg-primary-500/20 text-primary-400' : 'text-gray-400 hover:bg-dark-200'
@@ -214,7 +214,7 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
       </div>
 
       {/* Content */}
-      <div class="p-6">
+      <div class="p-3 sm:p-6">
         <Show when={loading()}>
           <div class="flex items-center justify-center py-20">
             <div class="w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full animate-spin" />
@@ -233,15 +233,15 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
         <Show when={!loading() && items().length > 0}>
           {/* Grid View */}
           <Show when={props.viewMode === 'grid'}>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
               <For each={items()}>
                 {(item) => (
                   <button
-                    class="group p-3 rounded-xl glass-hover text-center transition-all duration-200 hover:scale-[1.02]"
+                    class="group p-2 sm:p-3 rounded-lg sm:rounded-xl glass-hover text-center transition-all duration-200 hover:scale-[1.02] active:scale-95"
                     onClick={() => props.onFileClick(item)}
                   >
                     <Show when={item.type === 'image'}>
-                      <div class="w-full aspect-[3/4] rounded-lg overflow-hidden mb-3 bg-dark-300 shadow-lg">
+                      <div class="w-full aspect-[3/4] rounded-md sm:rounded-lg overflow-hidden mb-2 sm:mb-3 bg-dark-300 shadow-lg">
                         <img
                           src={props.getFileUrl(item.path)}
                           alt={item.name}
@@ -251,11 +251,11 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
                       </div>
                     </Show>
                     <Show when={item.type !== 'image'}>
-                      <div class="w-full aspect-[3/4] rounded-lg flex items-center justify-center mb-3 bg-dark-300/50">
-                        <FileIcon type={item.type} class="w-16 h-16" />
+                      <div class="w-full aspect-[3/4] rounded-md sm:rounded-lg flex items-center justify-center mb-2 sm:mb-3 bg-dark-300/50">
+                        <FileIcon type={item.type} class="w-10 h-10 sm:w-16 sm:h-16" />
                       </div>
                     </Show>
-                    <p class="text-sm text-gray-300 group-hover:text-white truncate px-1" title={item.name}>
+                    <p class="text-xs sm:text-sm text-gray-300 group-hover:text-white truncate px-1" title={item.name}>
                       {item.name}
                     </p>
                   </button>
@@ -305,13 +305,13 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
 
       {/* Image Preview Modal */}
       <Show when={props.selectedFile && props.selectedFile.type === 'image'}>
-        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 sm:bg-black/90 backdrop-blur-sm">
           {/* Close button */}
           <button
-            class="absolute top-4 right-4 p-2 rounded-lg bg-dark-300/80 text-white hover:bg-dark-200 transition-colors z-10"
+            class="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 sm:p-2 rounded-lg bg-dark-300/80 text-white hover:bg-dark-200 transition-colors z-20"
             onClick={props.onClosePreview}
           >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -319,18 +319,18 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
           {/* Navigation */}
           <Show when={allImages().length > 1}>
             <button
-              class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-dark-300/80 text-white hover:bg-dark-200 transition-colors"
+              class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-dark-300/80 text-white hover:bg-dark-200 active:scale-90 transition-all"
               onClick={() => navigateImage('prev')}
             >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
-              class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-dark-300/80 text-white hover:bg-dark-200 transition-colors"
+              class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-dark-300/80 text-white hover:bg-dark-200 active:scale-90 transition-all"
               onClick={() => navigateImage('next')}
             >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -339,37 +339,37 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
           {/* Image */}
           <div class="max-w-[95vw] max-h-[95vh] flex flex-col items-center overflow-auto">
             {/* Zoom controls */}
-            <div class="fixed top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full bg-dark-300/90 backdrop-blur-sm z-20">
+            <div class="fixed top-12 sm:top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bg-dark-300/90 backdrop-blur-sm z-20 max-w-[90vw] overflow-x-auto">
               <button
-                class={`px-3 py-1 rounded-lg text-sm transition-colors ${fitMode() === 'fit' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
+                class={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm transition-colors whitespace-nowrap ${fitMode() === 'fit' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
                 onClick={() => { setFitMode('fit'); setZoom(100); }}
               >
                 Fit
               </button>
               <button
-                class={`px-3 py-1 rounded-lg text-sm transition-colors ${fitMode() === 'width' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
+                class={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm transition-colors whitespace-nowrap ${fitMode() === 'width' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
                 onClick={() => { setFitMode('width'); setZoom(100); }}
               >
                 Fit Width
               </button>
               <button
-                class={`px-3 py-1 rounded-lg text-sm transition-colors ${fitMode() === 'actual' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
+                class={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm transition-colors whitespace-nowrap ${fitMode() === 'actual' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
                 onClick={() => { setFitMode('actual'); setZoom(100); }}
               >
                 100%
               </button>
-              <div class="w-px h-4 bg-gray-600 mx-1" />
+              <div class="w-px h-4 bg-gray-600 mx-1 hidden sm:block" />
               <button
-                class="p-1 rounded text-gray-400 hover:text-white"
+                class="p-1 rounded text-gray-400 hover:text-white hidden sm:block"
                 onClick={() => setZoom(z => Math.max(25, z - 25))}
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
                 </svg>
               </button>
-              <span class="text-sm text-gray-300 w-12 text-center">{zoom()}%</span>
+              <span class="text-xs sm:text-sm text-gray-300 w-10 sm:w-12 text-center hidden sm:block">{zoom()}%</span>
               <button
-                class="p-1 rounded text-gray-400 hover:text-white"
+                class="p-1 rounded text-gray-400 hover:text-white hidden sm:block"
                 onClick={() => setZoom(z => Math.min(300, z + 25))}
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -395,20 +395,15 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
                 }}
               />
             </div>
-            <div class="fixed bottom-4 left-1/2 -translate-x-1/2 text-center bg-dark-300/90 backdrop-blur-sm px-6 py-3 rounded-xl">
-              <p class="text-white font-medium text-sm">{props.selectedFile!.name}</p>
+            <div class="fixed bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center bg-dark-300/90 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl max-w-[95vw]">
+              <p class="text-white font-medium text-xs sm:text-sm truncate">{props.selectedFile!.name}</p>
               <p class="text-gray-400 text-xs mt-1">
                 <Show when={allImages().length > 1}>
                   <span>{imageIndex() + 1} of {allImages().length}</span>
-                  <span class="mx-2">•</span>
+                  <span class="mx-1 sm:mx-2">•</span>
                 </Show>
-                <span class="text-gray-500">← → navigate</span>
-                <span class="mx-2">•</span>
-                <span class="text-gray-500">+/- zoom</span>
-                <span class="mx-2">•</span>
-                <span class="text-gray-500">W fit-width</span>
-                <span class="mx-2">•</span>
-                <span class="text-gray-500">F fit</span>
+                <span class="text-gray-500 hidden sm:inline">← → navigate</span>
+                <span class="text-gray-500 sm:hidden">Swipe to navigate</span>
               </p>
             </div>
           </div>
@@ -417,17 +412,17 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
 
       {/* PDF Preview */}
       <Show when={props.selectedFile && props.selectedFile.type === 'pdf'}>
-        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
+        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-2 sm:p-0">
           <button
-            class="absolute top-4 right-4 p-2 rounded-lg bg-dark-300/80 text-white hover:bg-dark-200 transition-colors z-10"
+            class="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 rounded-lg bg-dark-300/80 text-white hover:bg-dark-200 transition-colors z-10"
             onClick={props.onClosePreview}
           >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
           
-          <div class="w-[90vw] h-[90vh] bg-white rounded-lg overflow-hidden">
+          <div class="w-full h-full sm:w-[90vw] sm:h-[90vh] bg-white rounded-lg overflow-hidden">
             <iframe
               src={`https://docs.google.com/viewer?url=${encodeURIComponent(props.getFileUrl(props.selectedFile!.path))}&embedded=true`}
               class="w-full h-full"
@@ -468,8 +463,8 @@ const CodePreview: Component<{
   });
 
   return (
-    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-8">
-      <div class="w-full max-w-4xl max-h-[90vh] glass rounded-xl overflow-hidden flex flex-col">
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-2 sm:p-8">
+      <div class="w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] glass rounded-xl overflow-hidden flex flex-col">
         {/* Header */}
         <div class="flex items-center justify-between px-4 py-3 border-b border-white/10">
           <div class="flex items-center gap-3">

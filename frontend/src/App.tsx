@@ -56,11 +56,22 @@ const App: Component = () => {
         />
         
         <div class="flex flex-1 pt-16">
-          {/* Sidebar */}
+          {/* Sidebar - overlay on mobile, fixed on desktop */}
           <Show when={sidebarOpen()}>
+            {/* Mobile overlay backdrop */}
+            <div 
+              class="fixed inset-0 bg-black/50 z-30 lg:hidden" 
+              onClick={() => setSidebarOpen(false)}
+            />
             <Sidebar 
               currentPath={currentPath()}
-              onNavigate={navigateTo}
+              onNavigate={(path) => {
+                navigateTo(path);
+                // Close sidebar on mobile after navigation
+                if (window.innerWidth < 1024) {
+                  setSidebarOpen(false);
+                }
+              }}
             />
           </Show>
           

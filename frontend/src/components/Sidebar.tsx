@@ -149,8 +149,8 @@ const Sidebar: Component<SidebarProps> = (props) => {
   });
 
   return (
-    <aside class="fixed left-0 top-16 bottom-0 w-64 glass border-r border-white/5 overflow-y-auto z-40">
-      <div class="p-4">
+    <aside class="fixed left-0 top-16 bottom-0 w-72 sm:w-64 glass border-r border-white/5 overflow-y-auto z-40 transform transition-transform duration-300 lg:translate-x-0">
+      <div class="p-3 sm:p-4">
         {/* Header */}
         <div class="flex items-center gap-2 mb-4 px-2">
           <svg class="w-5 h-5 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,13 +181,13 @@ const Sidebar: Component<SidebarProps> = (props) => {
       </div>
       
       {/* Bottom info */}
-      <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-white/5 bg-dark-500/80 backdrop-blur-sm">
+      <div class="absolute bottom-0 left-0 right-0 p-3 sm:p-4 border-t border-white/5 bg-dark-500/80 backdrop-blur-sm">
         <div class="text-xs text-gray-500">
           <div class="flex items-center gap-2 mb-1">
             <span class="w-2 h-2 rounded-full bg-accent-green" />
             <span>Synced with GitHub</span>
           </div>
-          <div class="text-gray-600">Handwritten notes from Scrble Ink</div>
+          <div class="text-gray-600 hidden sm:block">Handwritten notes from Scrble Ink</div>
         </div>
       </div>
     </aside>
