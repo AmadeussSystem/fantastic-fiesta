@@ -60,12 +60,16 @@ const FileIcon: Component<{ type: FileItem['type']; class?: string }> = (props) 
   }
 };
 
+// Detect if mobile device
+const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 768;
+
 const NotesViewer: Component<NotesViewerProps> = (props) => {
   const [items, setItems] = createSignal<FileItem[]>([]);
   const [loading, setLoading] = createSignal(true);
   const [imageIndex, setImageIndex] = createSignal(0);
   const [allImages, setAllImages] = createSignal<FileItem[]>([]);
-  const [zoom, setZoom] = createSignal(150); // Default 150% for mobile readability
+  // Default 150% for mobile, 100% for desktop
+  const [zoom, setZoom] = createSignal(isMobile() ? 150 : 100);
   const [zoomLocked, setZoomLocked] = createSignal(false); // Lock zoom feature
   const [fitMode, setFitMode] = createSignal<'fit' | 'width' | 'actual'>('width');
   
@@ -194,8 +198,13 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   };
 
   const handleTouchStart = (e: TouchEvent) => {
-    if (e.touches.length === 2 && !zoomLocked()) {
-      // Pinch start (only if zoom not locked)
+    // Only allow pinch if zoom is NOT locked
+    if (e.touches.length === 2) {
+      if (zoomLocked()) {
+        // When locked, don't initialize pinch - just ignore
+        return;
+      }
+      // Pinch start
       e.preventDefault();
       setInitialPinchDistance(getDistance(e.touches));
       setInitialZoom(zoom());
@@ -206,7 +215,13 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   };
 
   const handleTouchMove = (e: TouchEvent) => {
-    if (e.touches.length === 2 && initialPinchDistance() && !zoomLocked()) {
+    // Block all pinch zoom if locked
+    if (zoomLocked()) {
+      setInitialPinchDistance(null); // Clear any pending pinch
+      return;
+    }
+    
+    if (e.touches.length === 2 && initialPinchDistance()) {
       e.preventDefault();
       const currentDistance = getDistance(e.touches);
       const scale = currentDistance / initialPinchDistance()!;
