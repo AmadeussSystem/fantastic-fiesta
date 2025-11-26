@@ -7,6 +7,7 @@ export default defineConfig({
     UnoCSS(),
     solidPlugin(),
   ],
+  base: '/fantastic-fiesta/',
   server: {
     port: 3000,
   },
