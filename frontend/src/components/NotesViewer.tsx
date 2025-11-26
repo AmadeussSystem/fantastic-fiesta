@@ -137,6 +137,33 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
     props.onFileClick(images[newIndex]);
   };
 
+  // Touch swipe state
+  const [touchStart, setTouchStart] = createSignal<{ x: number; y: number } | null>(null);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    setTouchStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+  };
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    const start = touchStart();
+    if (!start) return;
+    
+    const endX = e.changedTouches[0].clientX;
+    const endY = e.changedTouches[0].clientY;
+    const diffX = start.x - endX;
+    const diffY = start.y - endY;
+    
+    // Only swipe if horizontal movement is greater than vertical
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+      if (diffX > 0) {
+        navigateImage('next');
+      } else {
+        navigateImage('prev');
+      }
+    }
+    setTouchStart(null);
+  };
+
   // Keyboard navigation
   onMount(() => {
     const handleKeydown = (e: KeyboardEvent) => {
