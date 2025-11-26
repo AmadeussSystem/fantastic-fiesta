@@ -1,11 +1,13 @@
 @echo off
 REM Launch Scrble Ink (UWP app)
+echo [BAT] Launching Scrble Ink...
 start "" "shell:AppsFolder\10511ClaudiaWey.inknotespro_9n0kwq747cbjy!App"
 
-REM Launch monitor in background, writing logs to monitor.log
-REM /MIN = start minimized; remove it if you want to see the window
-start "" /MIN cmd /c ^
+REM Launch monitor window (NOT minimized so you can see output)
+echo [BAT] Launching monitor...
+start "" cmd /c ^
 "cd /d C:\Users\lone\Documents\fantastic-fiesta\dist ^
- && monitor_scrble_sync.exe >> C:\Users\lone\Documents\fantastic-fiesta\monitor.log 2>&1"
+ && monitor_scrble_sync.exe"
 
-exit /b
+echo [BAT] Setup complete. You can close this window.
+timeout /t 3
