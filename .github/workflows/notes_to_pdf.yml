@@ -7,9 +7,9 @@ on:
   push:
     branches: [main]
     paths:
-      - "**/*.png"
-      - "**/*.jpg"
-      - "**/*.jpeg"
+      - "Scribble/**/*.png"
+      - "Scribble/**/*.jpg"
+      - "Scribble/**/*.jpeg"
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install img2pdf
+          pip install img2pdf Pillow
 
       - name: Find and convert images to PDF
         run: |
@@ -41,26 +41,78 @@ jobs:
           import img2pdf
           import os
           import re
-          from datetime import datetime
+          import io
+          from PIL import Image
           from collections import defaultdict
 
           def natural_key(s):
-              return [int(c) if c.isdigit() else c for c in re.split(r'(\d+)', s)]
+              """Sort strings with numbers naturally: page1, page2, page10 (not page1, page10, page2)"""
+              return [int(c) if c.isdigit() else c.lower() for c in re.split(r'(\d+)', s)]
 
-          # Find all image files and group by directory
+          def convert_image_for_pdf(image_path):
+              """
+              Convert image to PDF-compatible format.
+              Handles RGBA (transparency) by converting to RGB with white background.
+              Returns bytes ready for img2pdf, or None on failure.
+              """
+              try:
+                  with Image.open(image_path) as img:
+                      # If image has alpha channel, flatten to white background
+                      if img.mode in ('RGBA', 'LA', 'P'):
+                          # Create white background
+                          background = Image.new('RGB', img.size, (255, 255, 255))
+                          if img.mode == 'P':
+                              img = img.convert('RGBA')
+                          if img.mode in ('RGBA', 'LA'):
+                              # Paste image onto white background using alpha as mask
+                              background.paste(img, mask=img.split()[-1])
+                          else:
+                              background.paste(img)
+                          img = background
+                      elif img.mode != 'RGB':
+                          img = img.convert('RGB')
+                      
+                      # Save to bytes
+                      img_bytes = io.BytesIO()
+                      img.save(img_bytes, format='JPEG', quality=95)
+                      img_bytes.seek(0)
+                      return img_bytes.getvalue()
+              except Exception as e:
+                  print(f"   ⚠️ Warning: Could not process {image_path}: {e}")
+                  return None
+
+          # Skip patterns
+          SKIP_PATTERNS = ['.git', 'build', 'node_modules', 'dist', '__pycache__', '.vscode']
+
+          def should_skip(path):
+              """Check if path contains any skip patterns"""
+              path_lower = path.lower()
+              return any(skip in path_lower for skip in SKIP_PATTERNS)
+
+          # Find all image files and group by directory (only in Scribble folder)
           images_by_dir = defaultdict(list)
-          for root, dirs, files in os.walk('.'):
-              # Skip .git directories
-              if '.git' in root:
+          for root, dirs, files in os.walk('./Scribble'):
+              # Skip unwanted directories
+              if should_skip(root):
                   continue
+              
+              # Filter out skip directories from traversal
+              dirs[:] = [d for d in dirs if not should_skip(d)]
               
               for file in files:
                   if file.lower().endswith(('.png', '.jpg', '.jpeg')):
-                      images_by_dir[root].append(os.path.join(root, file))
+                      full_path = os.path.join(root, file)
+                      images_by_dir[root].append(full_path)
+
           if not images_by_dir:
               print("❌ No image files found to convert.")
               exit(0)
+
           print(f"📁 Found image files in {len(images_by_dir)} directories")
+          
+          successful = 0
+          failed = 0
+          
           for directory, image_files in images_by_dir.items():
               if not image_files:
                   continue
@@ -69,32 +121,53 @@ jobs:
               image_files.sort(key=lambda f: natural_key(os.path.basename(f)))
               
               print(f"\n📂 Processing directory: {directory}")
-              print(f"   Files: {[os.path.basename(f) for f in image_files]}")
+              print(f"   Found {len(image_files)} images")
               
               try:
-                  # Create PDF name based on directory
-                  if directory == '.':
-                      pdf_name = "root_notes_final.pdf"
-                      pdf_path = pdf_name
+                  # Create unique PDF name based on FULL path (not just folder name)
+                  # This prevents collision between Scribble/A/Sliding Window and Scribble/B/Sliding Window
+                  relative_path = directory.replace('./Scribble/', '').replace('./Scribble', '')
+                  if not relative_path:
+                      pdf_name = "scribble_notes_final.pdf"
                   else:
-                      # Extract folder name and create PDF name
-                      folder_name = os.path.basename(directory)
-                      # Convert to lowercase, remove non-alphanumeric except spaces, replace spaces with underscores
-                      pdf_name = re.sub(r'[^a-zA-Z0-9\s]', '', folder_name.lower())
+                      # Use full path for unique naming: DSA&Patterns/Arrays/Sliding Window -> dsapatterns_arrays_sliding_window
+                      pdf_name = re.sub(r'[^a-zA-Z0-9\s/\\]', '', relative_path.lower())
+                      pdf_name = re.sub(r'[/\\]+', '_', pdf_name)
                       pdf_name = re.sub(r'\s+', '_', pdf_name.strip())
+                      pdf_name = re.sub(r'_+', '_', pdf_name)  # Remove duplicate underscores
                       pdf_name = f"{pdf_name}_final.pdf"
-                      pdf_path = os.path.join(directory, pdf_name)
                   
-                  # Convert to PDF
+                  pdf_path = os.path.join(directory, pdf_name)
+                  
+                  # Convert all images (handling transparency)
+                  converted_images = []
+                  for img_path in image_files:
+                      img_data = convert_image_for_pdf(img_path)
+                      if img_data:
+                          converted_images.append(img_data)
+                  
+                  if not converted_images:
+                      print(f"   ❌ No valid images to convert in {directory}")
+                      failed += 1
+                      continue
+                  
+                  # Create PDF from converted images
+                  pdf_bytes = img2pdf.convert(converted_images)
+                  
                   with open(pdf_path, "wb") as f:
-                      f.write(img2pdf.convert(image_files))
+                      f.write(pdf_bytes)
                   
-                  print(f"✅ Created: {pdf_path}")
+                  print(f"   ✅ Created: {pdf_path} ({len(converted_images)} pages)")
+                  successful += 1
                   
               except Exception as e:
-                  print(f"❌ Error processing {directory}: {e}")
+                  print(f"   ❌ Error processing {directory}: {e}")
+                  failed += 1
                   continue
-          print("\n🎉 PDF conversion completed!")
+
+          print(f"\n🎉 PDF conversion completed!")
+          print(f"   ✅ Successful: {successful}")
+          print(f"   ❌ Failed: {failed}")
           EOF
 
       - name: Create file listing
@@ -104,23 +177,40 @@ jobs:
           echo "" >> output/file_listing.md
           echo "## Generated PDFs:" >> output/file_listing.md
           echo "" >> output/file_listing.md
-          find . -name "*_final.pdf" -not -path "./.git/*" | sort >> output/file_listing.md
+          find ./Scribble -name "*_final.pdf" | sort >> output/file_listing.md
 
       - name: Commit and push generated PDFs
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Pull latest to avoid conflicts with auto-sync
+          git pull --rebase origin main || true
+          
           # Add all generated PDF files and listing
-          git add **/*_final.pdf
-          git add output/
+          git add "Scribble/**/*_final.pdf" || true
+          git add "*_final.pdf" || true
+          git add output/ || true
+          
           # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
             TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
-            git commit -m "🤖 Auto-generate PDFs from image notes [$TIMESTAMP]"
-            git push
-            echo "✅ PDF files committed and pushed successfully"
+            git commit -m "🤖 Auto-generate PDFs from image notes [$TIMESTAMP]
+
+[skip ci]"
+            # Retry push up to 3 times in case of race condition
+            for i in 1 2 3; do
+              if git push; then
+                echo "✅ PDF files committed and pushed successfully"
+                break
+              else
+                echo "⚠️ Push failed, retrying ($i/3)..."
+                git pull --rebase origin main || true
+                sleep 2
+              fi
+            done
           fi
 
       - name: Cleanup
