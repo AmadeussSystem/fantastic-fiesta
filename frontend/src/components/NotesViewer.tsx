@@ -480,6 +480,18 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
               />
             </div>
             
+            {/* Tap zones for navigation - left third = prev, right third = next */}
+            <Show when={allImages().length > 1}>
+              <div 
+                class="fixed left-0 top-16 bottom-20 w-1/3 z-10 cursor-pointer"
+                onClick={() => navigateImage('prev')}
+              />
+              <div 
+                class="fixed right-0 top-16 bottom-20 w-1/3 z-10 cursor-pointer"
+                onClick={() => navigateImage('next')}
+              />
+            </Show>
+            
             {/* Bottom info bar */}
             <div class="fixed bottom-0 left-0 right-0 text-center bg-gradient-to-t from-black via-black/80 to-transparent px-4 py-3 pt-10 z-20">
               <p class="text-white font-medium text-sm truncate max-w-[85vw] mx-auto">{props.selectedFile!.name}</p>
@@ -489,7 +501,7 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
                   <span class="text-gray-500"> / {allImages().length}</span>
                   <span class="mx-2 text-gray-600">•</span>
                 </Show>
-                <span class="text-gray-500">Pinch to zoom • Swipe to navigate</span>
+                <span class="text-gray-500">Tap sides to navigate</span>
               </p>
             </div>
           </div>
