@@ -395,13 +395,21 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
                 }}
               />
             </div>
-            <div class="fixed bottom-4 left-1/2 -translate-x-1/2 text-center bg-dark-300/90 backdrop-blur-sm px-4 py-2 rounded-full">
+            <div class="fixed bottom-4 left-1/2 -translate-x-1/2 text-center bg-dark-300/90 backdrop-blur-sm px-6 py-3 rounded-xl">
               <p class="text-white font-medium text-sm">{props.selectedFile!.name}</p>
-              <Show when={allImages().length > 1}>
-                <p class="text-gray-400 text-xs mt-0.5">
-                  {imageIndex() + 1} of {allImages().length} • Use ← → to navigate
-                </p>
-              </Show>
+              <p class="text-gray-400 text-xs mt-1">
+                <Show when={allImages().length > 1}>
+                  <span>{imageIndex() + 1} of {allImages().length}</span>
+                  <span class="mx-2">•</span>
+                </Show>
+                <span class="text-gray-500">← → navigate</span>
+                <span class="mx-2">•</span>
+                <span class="text-gray-500">+/- zoom</span>
+                <span class="mx-2">•</span>
+                <span class="text-gray-500">W fit-width</span>
+                <span class="mx-2">•</span>
+                <span class="text-gray-500">F fit</span>
+              </p>
             </div>
           </div>
         </div>
