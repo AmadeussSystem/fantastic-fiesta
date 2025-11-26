@@ -66,10 +66,13 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   const [imageIndex, setImageIndex] = createSignal(0);
   const [allImages, setAllImages] = createSignal<FileItem[]>([]);
   const [zoom, setZoom] = createSignal(150); // Default 150% for mobile readability
+  const [zoomLocked, setZoomLocked] = createSignal(false); // Lock zoom feature
   const [fitMode, setFitMode] = createSignal<'fit' | 'width' | 'actual'>('width');
   
   // Ref to image scroll container for resetting position
   let scrollContainerRef: HTMLDivElement | undefined;
+  // Refs for each image to scroll to
+  const imageRefs: HTMLDivElement[] = [];
 
   // Fetch directory contents from GitHub API
   const fetchDirectoryContents = async (path: string) => {
