@@ -1,32 +1,84 @@
-import { Component } from 'solid-js';
+import { Component, createSignal, Show } from 'solid-js';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import Roadmap from './components/Roadmap';
-import SyncFeature from './components/SyncFeature';
-import Stats from './components/Stats';
-import Footer from './components/Footer';
+import Sidebar from './components/Sidebar';
+import NotesViewer from './components/NotesViewer';
+
+export interface FileItem {
+  name: string;
+  path: string;
+  type: 'folder' | 'image' | 'pdf' | 'code' | 'other';
+}
+
+// GitHub raw content base URL
+const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/AmadeussSystem/fantastic-fiesta/main';
 
 const App: Component = () => {
+  const [currentPath, setCurrentPath] = createSignal('Scribble');
+  const [selectedFile, setSelectedFile] = createSignal<FileItem | null>(null);
+  const [sidebarOpen, setSidebarOpen] = createSignal(true);
+  const [viewMode, setViewMode] = createSignal<'grid' | 'list'>('grid');
+
+  const breadcrumbs = () => {
+    const parts = currentPath().split('/');
+    return parts.map((part, index) => ({
+      name: part,
+      path: parts.slice(0, index + 1).join('/'),
+    }));
+  };
+
+  const navigateTo = (path: string) => {
+    setCurrentPath(path);
+    setSelectedFile(null);
+  };
+
+  const handleFileClick = (file: FileItem) => {
+    if (file.type === 'folder') {
+      navigateTo(file.path);
+    } else {
+      setSelectedFile(file);
+    }
+  };
+
+  const getFileUrl = (path: string) => `${GITHUB_RAW_BASE}/${path.split('/').map(p => encodeURIComponent(p)).join('/')}`;
+
   return (
-    <div class="min-h-screen bg-dark-500 text-white overflow-hidden">
+    <div class="min-h-screen bg-dark-500 text-white flex flex-col">
       {/* Background effects */}
-      <div class="fixed inset-0 bg-grid pointer-events-none" />
-      <div class="gradient-blob w-96 h-96 bg-primary-500/30 top-0 -left-48 fixed" />
-      <div class="gradient-blob w-80 h-80 bg-accent-purple/20 top-1/3 -right-40 fixed" />
-      <div class="gradient-blob w-72 h-72 bg-accent-pink/20 bottom-0 left-1/4 fixed" />
+      <div class="fixed inset-0 bg-grid pointer-events-none opacity-50" />
+      <div class="gradient-blob w-96 h-96 bg-primary-500/20 top-0 -left-48 fixed" />
+      <div class="gradient-blob w-80 h-80 bg-accent-purple/15 bottom-0 -right-40 fixed" />
       
       {/* Content */}
-      <div class="relative z-10">
-        <Navbar />
-        <main>
-          <Hero />
-          <Features />
-          <Stats />
-          <Roadmap />
-          <SyncFeature />
-        </main>
-        <Footer />
+      <div class="relative z-10 flex flex-col min-h-screen">
+        <Navbar 
+          sidebarOpen={sidebarOpen()} 
+          toggleSidebar={() => setSidebarOpen(!sidebarOpen())} 
+        />
+        
+        <div class="flex flex-1 pt-16">
+          {/* Sidebar */}
+          <Show when={sidebarOpen()}>
+            <Sidebar 
+              currentPath={currentPath()}
+              onNavigate={navigateTo}
+            />
+          </Show>
+          
+          {/* Main Content */}
+          <main class={`flex-1 transition-all duration-300 ${sidebarOpen() ? 'lg:ml-64' : 'ml-0'}`}>
+            <NotesViewer
+              currentPath={currentPath()}
+              selectedFile={selectedFile()}
+              breadcrumbs={breadcrumbs()}
+              viewMode={viewMode()}
+              onNavigate={navigateTo}
+              onFileClick={handleFileClick}
+              onViewModeChange={setViewMode}
+              onClosePreview={() => setSelectedFile(null)}
+              getFileUrl={getFileUrl}
+            />
+          </main>
+        </div>
       </div>
     </div>
   );
