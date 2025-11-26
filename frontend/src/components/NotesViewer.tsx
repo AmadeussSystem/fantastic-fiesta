@@ -367,24 +367,23 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
 
       {/* Image Preview Modal */}
       <Show when={props.selectedFile && props.selectedFile.type === 'image'}>
-        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 sm:bg-black/90 backdrop-blur-sm">
-          {/* Close button */}
+        <div class="fixed inset-0 z-50 bg-black image-viewer-container\">\n          {/* Close button */}
           <button
-            class="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 sm:p-2 rounded-lg bg-dark-300/80 text-white hover:bg-dark-200 transition-colors z-20"
+            class="fixed top-2 right-2 sm:top-4 sm:right-4 p-3 rounded-full bg-black/50 text-white hover:bg-black/70 active:scale-90 transition-all z-30\"
             onClick={props.onClosePreview}
           >
-            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
 
-          {/* Navigation */}
+          {/* Navigation - hidden on very small screens, use swipe instead */}
           <Show when={allImages().length > 1}>
             <button
-              class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-dark-300/80 text-white hover:bg-dark-200 active:scale-90 transition-all"
+              class="hidden sm:flex absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 text-white hover:bg-black/70 active:scale-90 transition-all z-20 items-center justify-center\"
               onClick={() => navigateImage('prev')}
             >
-              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
