@@ -144,6 +144,11 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
         if (e.key === 'ArrowLeft') navigateImage('prev');
         if (e.key === 'ArrowRight') navigateImage('next');
         if (e.key === 'Escape') props.onClosePreview();
+        if (e.key === '+' || e.key === '=') setZoom(z => Math.min(300, z + 25));
+        if (e.key === '-') setZoom(z => Math.max(25, z - 25));
+        if (e.key === '0') { setFitMode('actual'); setZoom(100); }
+        if (e.key === 'w') { setFitMode('width'); setZoom(100); }
+        if (e.key === 'f') { setFitMode('fit'); setZoom(100); }
       }
     };
     
