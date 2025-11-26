@@ -120,23 +120,46 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
     fetchDirectoryContents(props.currentPath);
   });
 
-  // Update image index when selected file changes and reset scroll position
+  // Update image index when selected file changes and scroll to that image
   createEffect(() => {
     if (props.selectedFile?.type === 'image') {
       const idx = allImages().findIndex(img => img.path === props.selectedFile?.path);
-      if (idx !== -1) setImageIndex(idx);
-      
-      // Reset scroll position when opening an image
-      setTimeout(() => {
-        if (scrollContainerRef) {
-          scrollContainerRef.scrollTop = 0;
-          const scrollWidth = scrollContainerRef.scrollWidth;
-          const clientWidth = scrollContainerRef.clientWidth;
-          scrollContainerRef.scrollLeft = Math.max(0, (scrollWidth - clientWidth) / 2);
-        }
-      }, 50);
+      if (idx !== -1) {
+        setImageIndex(idx);
+        // Scroll to the selected image after a brief delay for rendering
+        setTimeout(() => {
+          if (imageRefs[idx]) {
+            imageRefs[idx].scrollIntoView({ behavior: 'auto', block: 'start' });
+          }
+        }, 100);
+      }
     }
   });
+
+  // Track which image is currently visible during scroll
+  const handleScroll = () => {
+    if (!scrollContainerRef) return;
+    const scrollTop = scrollContainerRef.scrollTop;
+    const containerHeight = scrollContainerRef.clientHeight;
+    
+    // Find which image is most visible
+    for (let i = 0; i < imageRefs.length; i++) {
+      const ref = imageRefs[i];
+      if (ref) {
+        const rect = ref.getBoundingClientRect();
+        const containerRect = scrollContainerRef.getBoundingClientRect();
+        const relativeTop = rect.top - containerRect.top;
+        
+        // If this image's top is near the top of the viewport
+        if (relativeTop <= containerHeight / 3 && relativeTop + rect.height > 0) {
+          if (imageIndex() !== i) {
+            setImageIndex(i);
+          }
+          break;
+        }
+      }
+    }
+  };
 
   const navigateImage = (direction: 'prev' | 'next') => {
     const images = allImages();
@@ -150,15 +173,10 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
     }
     
     setImageIndex(newIndex);
-    props.onFileClick(images[newIndex]);
     
-    // Reset scroll position to top-center when navigating
-    if (scrollContainerRef) {
-      scrollContainerRef.scrollTop = 0;
-      // Center horizontally
-      const scrollWidth = scrollContainerRef.scrollWidth;
-      const clientWidth = scrollContainerRef.clientWidth;
-      scrollContainerRef.scrollLeft = (scrollWidth - clientWidth) / 2;
+    // Scroll to the target image
+    if (imageRefs[newIndex]) {
+      imageRefs[newIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
