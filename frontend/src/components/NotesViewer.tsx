@@ -364,7 +364,11 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
           </Show>
 
           {/* Image */}
-          <div class="max-w-[95vw] max-h-[95vh] flex flex-col items-center overflow-auto">
+          <div 
+            class="max-w-[95vw] max-h-[95vh] flex flex-col items-center overflow-auto"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Zoom controls */}
             <div class="fixed top-12 sm:top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bg-dark-300/90 backdrop-blur-sm z-20 max-w-[90vw] overflow-x-auto">
               <button
