@@ -1,4 +1,4 @@
-import { Component, For, createSignal, createEffect } from 'solid-js';
+import { Component, For, createSignal, createEffect, onMount, Show } from 'solid-js';
 
 interface SidebarProps {
   currentPath: string;
@@ -9,64 +9,83 @@ interface FolderNode {
   name: string;
   path: string;
   children?: FolderNode[];
+  loaded?: boolean;
 }
 
-const folderTree: FolderNode[] = [
-  {
-    name: 'Scribble',
-    path: 'Scribble',
-    children: [
-      {
-        name: 'DSA&Patterns',
-        path: 'Scribble/DSA&Patterns',
-        children: [
-          { name: 'Arrays', path: 'Scribble/DSA&Patterns/Arrays', children: [
-            { name: 'Cycle Sort', path: 'Scribble/DSA&Patterns/Arrays/Cycle Sort' },
-            { name: 'Merge Intervals', path: 'Scribble/DSA&Patterns/Arrays/Merge Intervals' },
-            { name: 'Modified Binary Search', path: 'Scribble/DSA&Patterns/Arrays/Modified Binary Search' },
-            { name: 'Quicksort', path: 'Scribble/DSA&Patterns/Arrays/Quicksort' },
-            { name: 'Revision', path: 'Scribble/DSA&Patterns/Arrays/Revision' },
-            { name: 'Sliding Window', path: 'Scribble/DSA&Patterns/Arrays/Sliding Window' },
-            { name: 'TwoPointers', path: 'Scribble/DSA&Patterns/Arrays/TwoPointers' },
-          ]},
-          { name: 'Bit Manipulation', path: 'Scribble/DSA&Patterns/Bit Manipulation' },
-          { name: 'CP', path: 'Scribble/DSA&Patterns/CP' },
-          { name: 'DevOps', path: 'Scribble/DSA&Patterns/DevOps' },
-          { name: 'IneuRon DSA', path: 'Scribble/DSA&Patterns/IneuRon DSA' },
-          { name: 'Linked List', path: 'Scribble/DSA&Patterns/Linked List' },
-          { name: 'RNN', path: 'Scribble/DSA&Patterns/RNN' },
-          { name: 'Semester-5', path: 'Scribble/DSA&Patterns/Semester-5', children: [
-            { name: 'Algorithms', path: 'Scribble/DSA&Patterns/Semester-5/Algorithms' },
-            { name: 'Full Stack', path: 'Scribble/DSA&Patterns/Semester-5/Full Stack', children: [
-              { name: 'Week-1', path: 'Scribble/DSA&Patterns/Semester-5/Full Stack/Week-1' },
-              { name: 'Week-2', path: 'Scribble/DSA&Patterns/Semester-5/Full Stack/Week-2' },
-              { name: 'Week-3 React', path: 'Scribble/DSA&Patterns/Semester-5/Full Stack/Week-3 React' },
-            ]},
-            { name: 'Machine Learning', path: 'Scribble/DSA&Patterns/Semester-5/Machine Learning' },
-          ]},
-        ],
-      },
-    ],
-  },
-];
+// Fetch folder contents from GitHub API
+const fetchFolderContents = async (path: string): Promise<FolderNode[]> => {
+  try {
+    const apiUrl = `https://api.github.com/repos/AmadeussSystem/fantastic-fiesta/contents/${path}`;
+    const response = await fetch(apiUrl);
+    
+    if (!response.ok) return [];
+    
+    const data = await response.json();
+    
+    if (Array.isArray(data)) {
+      return data
+        .filter((item: any) => item.type === 'dir' && !item.name.startsWith('.') && item.name !== 'build')
+        .map((item: any) => ({
+          name: item.name,
+          path: item.path,
+          children: undefined,
+          loaded: false,
+        }))
+        .sort((a: FolderNode, b: FolderNode) => a.name.localeCompare(b.name));
+    }
+    return [];
+  } catch (error) {
+    console.error('Error fetching folder:', error);
+    return [];
+  }
+};
 
 const FolderItem: Component<{
   node: FolderNode;
   currentPath: string;
   onNavigate: (path: string) => void;
   level?: number;
+  onLoadChildren: (path: string) => Promise<FolderNode[]>;
 }> = (props) => {
   const level = props.level || 0;
-  const [expanded, setExpanded] = createSignal(props.currentPath.startsWith(props.node.path));
+  const [expanded, setExpanded] = createSignal(false);
+  const [children, setChildren] = createSignal<FolderNode[]>(props.node.children || []);
+  const [loading, setLoading] = createSignal(false);
+  const [loaded, setLoaded] = createSignal(props.node.loaded || false);
   
+  // Auto-expand if current path is inside this folder
   createEffect(() => {
-    if (props.currentPath.startsWith(props.node.path)) {
+    if (props.currentPath.startsWith(props.node.path + '/') || props.currentPath === props.node.path) {
       setExpanded(true);
+      if (!loaded()) {
+        loadChildren();
+      }
     }
   });
 
+  const loadChildren = async () => {
+    if (loaded() || loading()) return;
+    setLoading(true);
+    const fetchedChildren = await props.onLoadChildren(props.node.path);
+    setChildren(fetchedChildren);
+    setLoaded(true);
+    setLoading(false);
+  };
+
+  const handleClick = async () => {
+    props.onNavigate(props.node.path);
+    if (!expanded()) {
+      setExpanded(true);
+      if (!loaded()) {
+        await loadChildren();
+      }
+    } else {
+      setExpanded(false);
+    }
+  };
+
   const isActive = () => props.currentPath === props.node.path;
-  const hasChildren = () => props.node.children && props.node.children.length > 0;
+  const hasChildren = () => children().length > 0 || !loaded();
 
   return (
     <div>
@@ -77,7 +96,7 @@ const FolderItem: Component<{
             : 'text-gray-400 hover:bg-dark-200 hover:text-white'
         }`}
         style={{ "padding-left": `${level * 12 + 12}px` }}
-        onClick={() => {
+        onClick={handleClick}
           if (hasChildren()) {
             setExpanded(!expanded());
           }
