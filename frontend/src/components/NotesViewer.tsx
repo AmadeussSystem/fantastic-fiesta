@@ -388,10 +388,10 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
               </svg>
             </button>
             <button
-              class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-dark-300/80 text-white hover:bg-dark-200 active:scale-90 transition-all"
+              class="hidden sm:flex absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 text-white hover:bg-black/70 active:scale-90 transition-all z-20 items-center justify-center"
               onClick={() => navigateImage('next')}
             >
-              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -399,16 +399,16 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
 
           {/* Image */}
           <div 
-            class="w-full h-full flex flex-col items-center overflow-auto"
+            class="w-full h-full overflow-auto modal-scroll"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             {/* Zoom controls - Mobile optimized */}
-            <div class="fixed top-14 sm:top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-1.5 rounded-full bg-dark-300/95 backdrop-blur-sm z-20">
-              {/* Zoom out button - visible on mobile */}
+            <div class="fixed top-2 left-1/2 -translate-x-1/2 flex items-center gap-1 px-3 py-2 rounded-full bg-black/70 backdrop-blur-sm z-20">
+              {/* Zoom out button */}
               <button
-                class="p-2 rounded-full text-gray-300 hover:text-white hover:bg-dark-200 active:scale-90 transition-all"
+                class="p-2 rounded-full text-white hover:bg-white/20 active:scale-90 transition-all"
                 onClick={() => setZoom(z => Math.max(50, z - 25))}
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -417,7 +417,7 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
               </button>
               
               {/* Zoom level indicator */}
-              <span class="text-sm text-white font-medium w-14 text-center">{zoom()}%</span>
+              <span class="text-sm text-white font-bold w-14 text-center">{zoom()}%</span>
               
               {/* Zoom in button - visible on mobile */}
               <button
