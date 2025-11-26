@@ -246,11 +246,11 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
                       </div>
                     </Show>
                     <Show when={item.type !== 'image'}>
-                      <div class="w-full aspect-square rounded-lg flex items-center justify-center mb-3 bg-dark-300/50">
-                        <FileIcon type={item.type} class="w-12 h-12" />
+                      <div class="w-full aspect-[3/4] rounded-lg flex items-center justify-center mb-3 bg-dark-300/50">
+                        <FileIcon type={item.type} class="w-16 h-16" />
                       </div>
                     </Show>
-                    <p class="text-sm text-gray-300 group-hover:text-white truncate" title={item.name}>
+                    <p class="text-sm text-gray-300 group-hover:text-white truncate px-1" title={item.name}>
                       {item.name}
                     </p>
                   </button>
