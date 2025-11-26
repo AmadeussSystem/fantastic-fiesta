@@ -117,11 +117,21 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
     fetchDirectoryContents(props.currentPath);
   });
 
-  // Update image index when selected file changes
+  // Update image index when selected file changes and reset scroll position
   createEffect(() => {
     if (props.selectedFile?.type === 'image') {
       const idx = allImages().findIndex(img => img.path === props.selectedFile?.path);
       if (idx !== -1) setImageIndex(idx);
+      
+      // Reset scroll position when opening an image
+      setTimeout(() => {
+        if (scrollContainerRef) {
+          scrollContainerRef.scrollTop = 0;
+          const scrollWidth = scrollContainerRef.scrollWidth;
+          const clientWidth = scrollContainerRef.clientWidth;
+          scrollContainerRef.scrollLeft = Math.max(0, (scrollWidth - clientWidth) / 2);
+        }
+      }, 50);
     }
   });
 
