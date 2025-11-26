@@ -119,3 +119,34 @@ img.loaded,
 img[src] {
   opacity: 1;
 }
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  /* Prevent text selection during swipe */
+  .touch-none {
+    touch-action: none;
+  }
+  
+  /* Better tap targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent pull-to-refresh on image viewer */
+  .image-viewer {
+    overscroll-behavior: contain;
+  }
+}
+
+/* Image viewer full screen mode */
+.image-viewer-container {
+  touch-action: pan-x pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent iOS bounce effect in modal */
+.modal-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
