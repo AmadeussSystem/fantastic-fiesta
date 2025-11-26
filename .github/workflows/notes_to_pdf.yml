@@ -1,0 +1,128 @@
+name: Convert Images to PDF
+
+on:
+  schedule:
+    - cron: "0 */10 * * *" # every 10 hours
+  workflow_dispatch: # Allows manual triggering
+  push:
+    branches: [main]
+    paths:
+      - "**/*.png"
+      - "**/*.jpg"
+      - "**/*.jpeg"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install img2pdf
+
+      - name: Find and convert images to PDF
+        run: |
+          # Convert to PDF using Python for better organization
+          python3 << 'EOF'
+          import img2pdf
+          import os
+          import re
+          from datetime import datetime
+          from collections import defaultdict
+
+          def natural_key(s):
+              return [int(c) if c.isdigit() else c for c in re.split(r'(\d+)', s)]
+
+          # Find all image files and group by directory
+          images_by_dir = defaultdict(list)
+          for root, dirs, files in os.walk('.'):
+              # Skip .git directories
+              if '.git' in root:
+                  continue
+              
+              for file in files:
+                  if file.lower().endswith(('.png', '.jpg', '.jpeg')):
+                      images_by_dir[root].append(os.path.join(root, file))
+          if not images_by_dir:
+              print("❌ No image files found to convert.")
+              exit(0)
+          print(f"📁 Found image files in {len(images_by_dir)} directories")
+          for directory, image_files in images_by_dir.items():
+              if not image_files:
+                  continue
+              
+              # Sort files naturally by basename for consistent ordering
+              image_files.sort(key=lambda f: natural_key(os.path.basename(f)))
+              
+              print(f"\n📂 Processing directory: {directory}")
+              print(f"   Files: {[os.path.basename(f) for f in image_files]}")
+              
+              try:
+                  # Create PDF name based on directory
+                  if directory == '.':
+                      pdf_name = "root_notes_final.pdf"
+                      pdf_path = pdf_name
+                  else:
+                      # Extract folder name and create PDF name
+                      folder_name = os.path.basename(directory)
+                      # Convert to lowercase, remove non-alphanumeric except spaces, replace spaces with underscores
+                      pdf_name = re.sub(r'[^a-zA-Z0-9\s]', '', folder_name.lower())
+                      pdf_name = re.sub(r'\s+', '_', pdf_name.strip())
+                      pdf_name = f"{pdf_name}_final.pdf"
+                      pdf_path = os.path.join(directory, pdf_name)
+                  
+                  # Convert to PDF
+                  with open(pdf_path, "wb") as f:
+                      f.write(img2pdf.convert(image_files))
+                  
+                  print(f"✅ Created: {pdf_path}")
+                  
+              except Exception as e:
+                  print(f"❌ Error processing {directory}: {e}")
+                  continue
+          print("\n🎉 PDF conversion completed!")
+          EOF
+
+      - name: Create file listing
+        run: |
+          mkdir -p output
+          echo "# Notes Collection - $(date)" > output/file_listing.md
+          echo "" >> output/file_listing.md
+          echo "## Generated PDFs:" >> output/file_listing.md
+          echo "" >> output/file_listing.md
+          find . -name "*_final.pdf" -not -path "./.git/*" | sort >> output/file_listing.md
+
+      - name: Commit and push generated PDFs
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Add all generated PDF files and listing
+          git add **/*_final.pdf
+          git add output/
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+            git commit -m "🤖 Auto-generate PDFs from image notes [$TIMESTAMP]"
+            git push
+            echo "✅ PDF files committed and pushed successfully"
+          fi
+
+      - name: Cleanup
+        run: |
+          echo "🧹 Cleanup completed"
