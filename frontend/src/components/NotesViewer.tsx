@@ -408,11 +408,12 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
         </Show>
       </div>
 
-      {/* Image Preview Modal */}
+      {/* Image Preview Modal - Continuous Scroll View (like PDF) */}
       <Show when={props.selectedFile && props.selectedFile.type === 'image'}>
-        <div class="fixed inset-0 z-50 bg-black image-viewer-container\">\n          {/* Close button */}
+        <div class="fixed inset-0 z-50 bg-black image-viewer-container">
+          {/* Close button */}
           <button
-            class="fixed top-2 right-2 sm:top-4 sm:right-4 p-3 rounded-full bg-black/50 text-white hover:bg-black/70 active:scale-90 transition-all z-30\"
+            class="fixed top-2 right-2 p-3 rounded-full bg-black/50 text-white hover:bg-black/70 active:scale-90 transition-all z-30"
             onClick={props.onClosePreview}
           >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -420,40 +421,22 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
             </svg>
           </button>
 
-          {/* Navigation - hidden on very small screens, use swipe instead */}
-          <Show when={allImages().length > 1}>
-            <button
-              class="hidden sm:flex absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 text-white hover:bg-black/70 active:scale-90 transition-all z-20 items-center justify-center\"
-              onClick={() => navigateImage('prev')}
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              class="hidden sm:flex absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 text-white hover:bg-black/70 active:scale-90 transition-all z-20 items-center justify-center"
-              onClick={() => navigateImage('next')}
-            >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </Show>
-
-          {/* Image */}
+          {/* Continuous scroll container for all images */}
           <div 
             ref={scrollContainerRef}
             class="w-full h-full overflow-auto modal-scroll"
+            onScroll={handleScroll}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Zoom controls - Mobile optimized */}
-            <div class="fixed top-2 left-1/2 -translate-x-1/2 flex items-center gap-1 px-3 py-2 rounded-full bg-black/70 backdrop-blur-sm z-20">
+            {/* Top Zoom controls bar */}
+            <div class="fixed top-2 left-1/2 -translate-x-1/2 flex items-center gap-1 px-3 py-2 rounded-full bg-black/80 backdrop-blur-sm z-20">
               {/* Zoom out button */}
               <button
-                class="p-2 rounded-full text-white hover:bg-white/20 active:scale-90 transition-all"
-                onClick={() => setZoom(z => Math.max(50, z - 25))}
+                class={`p-2 rounded-full text-white hover:bg-white/20 active:scale-90 transition-all ${zoomLocked() ? 'opacity-50' : ''}`}
+                onClick={() => !zoomLocked() && setZoom(z => Math.max(50, z - 25))}
+                disabled={zoomLocked()}
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
@@ -465,8 +448,9 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
               
               {/* Zoom in button */}
               <button
-                class="p-2 rounded-full text-white hover:bg-white/20 active:scale-90 transition-all"
-                onClick={() => setZoom(z => Math.min(400, z + 25))}
+                class={`p-2 rounded-full text-white hover:bg-white/20 active:scale-90 transition-all ${zoomLocked() ? 'opacity-50' : ''}`}
+                onClick={() => !zoomLocked() && setZoom(z => Math.min(400, z + 25))}
+                disabled={zoomLocked()}
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -476,53 +460,70 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
               {/* Divider */}
               <div class="w-px h-5 bg-white/30 mx-1" />
               
-              {/* Fit button */}
+              {/* Lock zoom button */}
               <button
-                class={`px-3 py-1.5 rounded-full text-xs font-bold transition-all active:scale-95 ${fitMode() === 'fit' && zoom() === 100 ? 'bg-primary-500 text-white' : 'text-white/80 hover:text-white'}`}
-                onClick={() => { setFitMode('fit'); setZoom(100); }}
+                class={`p-2 rounded-full transition-all active:scale-90 ${zoomLocked() ? 'bg-primary-500 text-white' : 'text-white/80 hover:bg-white/20'}`}
+                onClick={() => setZoomLocked(!zoomLocked())}
+                title={zoomLocked() ? 'Unlock zoom' : 'Lock zoom'}
               >
-                Fit
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <Show when={zoomLocked()}>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </Show>
+                  <Show when={!zoomLocked()}>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                  </Show>
+                </svg>
               </button>
             </div>
 
-            {/* Image container - full width scroll */}
-            <div class="w-full min-h-full flex justify-center pt-14 pb-24">
-              <img
-                src={props.getFileUrl(props.selectedFile!.path)}
-                alt={props.selectedFile!.name}
-                class="bg-white block"
-                draggable={false}
-                style={{
-                  "width": fitMode() === 'fit' ? 'auto' : `${zoom()}vw`,
-                  "max-width": fitMode() === 'fit' ? '100vw' : 'none',
-                  "max-height": fitMode() === 'fit' ? 'calc(100vh - 120px)' : 'none',
-                  "object-fit": "contain",
-                }}
-              />
+            {/* All images stacked vertically - continuous scroll */}
+            <div class="flex flex-col items-center pt-14 pb-20">
+              <For each={allImages()}>
+                {(image, index) => (
+                  <div 
+                    ref={(el) => imageRefs[index()] = el}
+                    class="w-full flex flex-col items-center"
+                  >
+                    {/* Page indicator */}
+                    <div class="w-full py-2 text-center bg-black/50 sticky top-12 z-10">
+                      <span class="text-xs text-gray-400">
+                        Page {index() + 1} of {allImages().length}
+                      </span>
+                      <span class="text-xs text-gray-600 ml-2 hidden sm:inline">
+                        {image.name}
+                      </span>
+                    </div>
+                    
+                    {/* Image */}
+                    <img
+                      src={props.getFileUrl(image.path)}
+                      alt={image.name}
+                      class="bg-white block mb-4"
+                      draggable={false}
+                      loading={index() < 3 ? "eager" : "lazy"}
+                      style={{
+                        "width": `${zoom()}vw`,
+                        "max-width": "none",
+                      }}
+                    />
+                  </div>
+                )}
+              </For>
             </div>
             
-            {/* Tap zones for navigation - left third = prev, right third = next */}
-            <Show when={allImages().length > 1}>
-              <div 
-                class="fixed left-0 top-16 bottom-20 w-1/3 z-10 cursor-pointer"
-                onClick={() => navigateImage('prev')}
-              />
-              <div 
-                class="fixed right-0 top-16 bottom-20 w-1/3 z-10 cursor-pointer"
-                onClick={() => navigateImage('next')}
-              />
-            </Show>
-            
             {/* Bottom info bar */}
-            <div class="fixed bottom-0 left-0 right-0 text-center bg-gradient-to-t from-black via-black/80 to-transparent px-4 py-3 pt-10 z-20">
-              <p class="text-white font-medium text-sm truncate max-w-[85vw] mx-auto">{props.selectedFile!.name}</p>
-              <p class="text-gray-400 text-xs mt-1">
-                <Show when={allImages().length > 1}>
-                  <span class="text-primary-400 font-bold">{imageIndex() + 1}</span>
-                  <span class="text-gray-500"> / {allImages().length}</span>
-                  <span class="mx-2 text-gray-600">•</span>
+            <div class="fixed bottom-0 left-0 right-0 text-center bg-gradient-to-t from-black via-black/80 to-transparent px-4 py-3 pt-8 z-20">
+              <p class="text-white font-medium text-sm">
+                <span class="text-primary-400 font-bold">{imageIndex() + 1}</span>
+                <span class="text-gray-400"> / {allImages().length}</span>
+              </p>
+              <p class="text-gray-500 text-xs mt-1">
+                Scroll to view all pages
+                <Show when={zoomLocked()}>
+                  <span class="mx-1">•</span>
+                  <span class="text-primary-400">Zoom locked</span>
                 </Show>
-                <span class="text-gray-500">Tap sides to navigate</span>
               </p>
             </div>
           </div>
