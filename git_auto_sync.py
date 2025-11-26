@@ -76,4 +76,129 @@ def sync_changes():
             # 1. Pull remote changes first
             pull = run_git("git pull")
             if pull.returncode != 0:
-                pr
+                print("[WARN] 'git pull' failed. Trying to reset to origin/main.")
+                # Best-effort cleanup, ignore failures
+                run_git("git merge --abort")
+                run_git("git fetch --all")
+                run_git("git reset --hard origin/main")
+
+            # 2. Try auto-resolve if there are merge conflicts
+            auto_resolve_conflicts()
+
+            # 3. Stage tracked changes
+            for rel_path in list(changed_files):
+                full_path = os.path.join(REPO_PATH, rel_path)
+                if os.path.exists(full_path):
+                    run_git(f'git add "{rel_path}"')
+                else:
+                    # file was deleted
+                    run_git(f'git rm --cached "{rel_path}"')
+
+            # 4. If there are staged changes, commit and push
+            diff = run_git("git diff --cached --quiet")
+            if diff.returncode != 0:
+                run_git(f'git commit -m "{GIT_COMMIT_MESSAGE}"')
+                push = run_git("git push")
+                if push.returncode == 0:
+                    print("[INFO] Changes committed and pushed.")
+                else:
+                    print("[ERROR] 'git push' failed.")
+                    if push.stderr.strip():
+                        print(push.stderr.strip())
+            else:
+                print("[INFO] No new changes to commit.")
+        except Exception:
+            print("[ERROR] Exception during sync:")
+            traceback.print_exc()
+        finally:
+            changed_files.clear()
+            change_detected = False
+
+
+# ─── Debouncer & periodic sync ────────────────────────────────────
+def debounce_sync():
+    """
+    Debounce sync so we only run it once DEBOUNCE_DELAY seconds
+    after the last change.
+    """
+    global timer
+    if timer:
+        timer.cancel()
+    timer = threading.Timer(DEBOUNCE_DELAY, sync_changes)
+    timer.daemon = True
+    timer.start()
+
+
+def periodic_sync():
+    """
+    Always try a sync every PERIODIC_SYNC_INTERVAL seconds,
+    even if no file system event happened (to catch remote-only changes).
+    """
+    global periodic_timer, change_detected
+    with lock:
+        change_detected = True
+    debounce_sync()
+
+    periodic_timer = threading.Timer(PERIODIC_SYNC_INTERVAL, periodic_sync)
+    periodic_timer.daemon = True
+    periodic_timer.start()
+
+
+# ─── Watchdog handler ─────────────────────────────────────────────
+class GitHandler(FileSystemEventHandler):
+    def _handle(self, src_path, event_type):
+        global change_detected
+
+        if ".git" in src_path:
+            return
+
+        rel = os.path.relpath(src_path, REPO_PATH)
+        with lock:
+            changed_files.add(rel)
+            change_detected = True
+
+        print(f"[EVENT] {event_type}: {rel}")
+        debounce_sync()
+
+    def on_modified(self, event):
+        if event.is_directory:
+            return
+        self._handle(event.src_path, "modified")
+
+    def on_created(self, event):
+        if event.is_directory:
+            return
+        self._handle(event.src_path, "created")
+
+    def on_deleted(self, event):
+        if event.is_directory:
+            return
+        self._handle(event.src_path, "deleted")
+
+
+# ─── Main ─────────────────────────────────────────────────────────
+if __name__ == "__main__":
+    if not os.path.isdir(os.path.join(REPO_PATH, ".git")):
+        print("Not a git repository. Run 'git init' and set a remote first.")
+        raise SystemExit(1)
+
+    print("[INFO] Watching notes in:", REPO_PATH)
+
+    handler = GitHandler()
+    observer = Observer()
+    observer.schedule(handler, path=REPO_PATH, recursive=True)
+    observer.start()
+
+    periodic_sync()
+
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        print("[INFO] Shutting down watcher...")
+        observer.stop()
+    observer.join()
+    if timer:
+        timer.cancel()
+    if periodic_timer:
+        periodic_timer.cancel()
