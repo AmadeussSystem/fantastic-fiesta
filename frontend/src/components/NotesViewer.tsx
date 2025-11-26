@@ -330,16 +330,68 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
           </Show>
 
           {/* Image */}
-          <div class="max-w-[90vw] max-h-[85vh] flex flex-col items-center">
-            <img
-              src={props.getFileUrl(props.selectedFile!.path)}
-              alt={props.selectedFile!.name}
-              class="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
-            />
-            <div class="mt-4 text-center">
-              <p class="text-white font-medium">{props.selectedFile!.name}</p>
+          <div class="max-w-[95vw] max-h-[95vh] flex flex-col items-center overflow-auto">
+            {/* Zoom controls */}
+            <div class="fixed top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full bg-dark-300/90 backdrop-blur-sm z-20">
+              <button
+                class={`px-3 py-1 rounded-lg text-sm transition-colors ${fitMode() === 'fit' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
+                onClick={() => { setFitMode('fit'); setZoom(100); }}
+              >
+                Fit
+              </button>
+              <button
+                class={`px-3 py-1 rounded-lg text-sm transition-colors ${fitMode() === 'width' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
+                onClick={() => { setFitMode('width'); setZoom(100); }}
+              >
+                Fit Width
+              </button>
+              <button
+                class={`px-3 py-1 rounded-lg text-sm transition-colors ${fitMode() === 'actual' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
+                onClick={() => { setFitMode('actual'); setZoom(100); }}
+              >
+                100%
+              </button>
+              <div class="w-px h-4 bg-gray-600 mx-1" />
+              <button
+                class="p-1 rounded text-gray-400 hover:text-white"
+                onClick={() => setZoom(z => Math.max(25, z - 25))}
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                </svg>
+              </button>
+              <span class="text-sm text-gray-300 w-12 text-center">{zoom()}%</span>
+              <button
+                class="p-1 rounded text-gray-400 hover:text-white"
+                onClick={() => setZoom(z => Math.min(300, z + 25))}
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+              </button>
+            </div>
+
+            <div 
+              class="flex-1 overflow-auto p-4 flex items-start justify-center w-full"
+              style={{ "max-height": "calc(95vh - 80px)" }}
+            >
+              <img
+                src={props.getFileUrl(props.selectedFile!.path)}
+                alt={props.selectedFile!.name}
+                class="shadow-2xl bg-white"
+                style={{
+                  "max-width": fitMode() === 'fit' ? '100%' : fitMode() === 'width' ? `${zoom()}%` : 'none',
+                  "max-height": fitMode() === 'fit' ? 'calc(95vh - 120px)' : 'none',
+                  "width": fitMode() === 'width' ? `${zoom()}%` : fitMode() === 'actual' ? 'auto' : undefined,
+                  "transform": fitMode() === 'actual' ? `scale(${zoom() / 100})` : undefined,
+                  "transform-origin": "top center",
+                }}
+              />
+            </div>
+            <div class="fixed bottom-4 left-1/2 -translate-x-1/2 text-center bg-dark-300/90 backdrop-blur-sm px-4 py-2 rounded-full">
+              <p class="text-white font-medium text-sm">{props.selectedFile!.name}</p>
               <Show when={allImages().length > 1}>
-                <p class="text-gray-400 text-sm mt-1">
+                <p class="text-gray-400 text-xs mt-0.5">
                   {imageIndex() + 1} of {allImages().length} • Use ← → to navigate
                 </p>
               </Show>
