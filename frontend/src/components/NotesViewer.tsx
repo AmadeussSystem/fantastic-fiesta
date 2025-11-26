@@ -228,15 +228,15 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
         <Show when={!loading() && items().length > 0}>
           {/* Grid View */}
           <Show when={props.viewMode === 'grid'}>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               <For each={items()}>
                 {(item) => (
                   <button
-                    class="group p-4 rounded-xl glass-hover text-center transition-all duration-200 hover:scale-105"
+                    class="group p-3 rounded-xl glass-hover text-center transition-all duration-200 hover:scale-[1.02]"
                     onClick={() => props.onFileClick(item)}
                   >
                     <Show when={item.type === 'image'}>
-                      <div class="w-full aspect-square rounded-lg overflow-hidden mb-3 bg-dark-300">
+                      <div class="w-full aspect-[3/4] rounded-lg overflow-hidden mb-3 bg-dark-300 shadow-lg">
                         <img
                           src={props.getFileUrl(item.path)}
                           alt={item.name}
