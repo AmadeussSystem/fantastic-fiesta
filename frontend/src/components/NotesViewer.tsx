@@ -137,14 +137,49 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
     props.onFileClick(images[newIndex]);
   };
 
-  // Touch swipe state
+  // Touch swipe state for navigation
   const [touchStart, setTouchStart] = createSignal<{ x: number; y: number } | null>(null);
+  // Pinch zoom state
+  const [initialPinchDistance, setInitialPinchDistance] = createSignal<number | null>(null);
+  const [initialZoom, setInitialZoom] = createSignal(100);
+
+  const getDistance = (touches: TouchList) => {
+    if (touches.length < 2) return 0;
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  };
 
   const handleTouchStart = (e: TouchEvent) => {
-    setTouchStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+    if (e.touches.length === 2) {
+      // Pinch start
+      e.preventDefault();
+      setInitialPinchDistance(getDistance(e.touches));
+      setInitialZoom(zoom());
+    } else if (e.touches.length === 1) {
+      // Swipe start
+      setTouchStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+    }
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (e.touches.length === 2 && initialPinchDistance()) {
+      e.preventDefault();
+      const currentDistance = getDistance(e.touches);
+      const scale = currentDistance / initialPinchDistance()!;
+      const newZoom = Math.min(400, Math.max(50, initialZoom() * scale));
+      setZoom(Math.round(newZoom));
+      setFitMode('width'); // Switch to width mode for custom zoom
+    }
   };
 
   const handleTouchEnd = (e: TouchEvent) => {
+    // Reset pinch state
+    if (initialPinchDistance()) {
+      setInitialPinchDistance(null);
+      return;
+    }
+    
     const start = touchStart();
     if (!start) return;
     
@@ -153,8 +188,8 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
     const diffX = start.x - endX;
     const diffY = start.y - endY;
     
-    // Only swipe if horizontal movement is greater than vertical
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+    // Only swipe if horizontal movement is greater than vertical and zoom is at 100%
+    if (zoom() <= 100 && Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
       if (diffX > 0) {
         navigateImage('next');
       } else {
@@ -365,76 +400,73 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
 
           {/* Image */}
           <div 
-            class="max-w-[95vw] max-h-[95vh] flex flex-col items-center overflow-auto"
+            class="w-full h-full flex flex-col items-center overflow-auto"
             onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Zoom controls */}
-            <div class="fixed top-12 sm:top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bg-dark-300/90 backdrop-blur-sm z-20 max-w-[90vw] overflow-x-auto">
+            {/* Zoom controls - Mobile optimized */}
+            <div class="fixed top-14 sm:top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-1.5 rounded-full bg-dark-300/95 backdrop-blur-sm z-20">
+              {/* Zoom out button - visible on mobile */}
               <button
-                class={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm transition-colors whitespace-nowrap ${fitMode() === 'fit' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
-                onClick={() => { setFitMode('fit'); setZoom(100); }}
-              >
-                Fit
-              </button>
-              <button
-                class={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm transition-colors whitespace-nowrap ${fitMode() === 'width' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
-                onClick={() => { setFitMode('width'); setZoom(100); }}
-              >
-                Fit Width
-              </button>
-              <button
-                class={`px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm transition-colors whitespace-nowrap ${fitMode() === 'actual' ? 'bg-primary-500 text-white' : 'text-gray-400 hover:text-white'}`}
-                onClick={() => { setFitMode('actual'); setZoom(100); }}
-              >
-                100%
-              </button>
-              <div class="w-px h-4 bg-gray-600 mx-1 hidden sm:block" />
-              <button
-                class="p-1 rounded text-gray-400 hover:text-white hidden sm:block"
-                onClick={() => setZoom(z => Math.max(25, z - 25))}
+                class="p-2 rounded-full text-gray-300 hover:text-white hover:bg-dark-200 active:scale-90 transition-all"
+                onClick={() => setZoom(z => Math.max(50, z - 25))}
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
                 </svg>
               </button>
-              <span class="text-xs sm:text-sm text-gray-300 w-10 sm:w-12 text-center hidden sm:block">{zoom()}%</span>
+              
+              {/* Zoom level indicator */}
+              <span class="text-sm text-white font-medium w-14 text-center">{zoom()}%</span>
+              
+              {/* Zoom in button - visible on mobile */}
               <button
-                class="p-1 rounded text-gray-400 hover:text-white hidden sm:block"
-                onClick={() => setZoom(z => Math.min(300, z + 25))}
+                class="p-2 rounded-full text-gray-300 hover:text-white hover:bg-dark-200 active:scale-90 transition-all"
+                onClick={() => setZoom(z => Math.min(400, z + 25))}
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
               </button>
+              
+              {/* Divider */}
+              <div class="w-px h-5 bg-gray-600 mx-1" />
+              
+              {/* Fit button */}
+              <button
+                class={`px-3 py-1.5 rounded-full text-xs font-medium transition-all active:scale-95 ${fitMode() === 'fit' && zoom() === 100 ? 'bg-primary-500 text-white' : 'text-gray-300 hover:text-white'}`}
+                onClick={() => { setFitMode('fit'); setZoom(100); }}
+              >
+                Fit
+              </button>
             </div>
 
             <div 
-              class="flex-1 overflow-auto p-4 flex items-start justify-center w-full"
-              style={{ "max-height": "calc(95vh - 80px)" }}
+              class="flex-1 overflow-auto flex items-start justify-center w-full pt-16 pb-20 px-0"
             >
               <img
                 src={props.getFileUrl(props.selectedFile!.path)}
                 alt={props.selectedFile!.name}
-                class="shadow-2xl bg-white"
+                class="bg-white select-none"
+                draggable={false}
                 style={{
-                  "max-width": fitMode() === 'fit' ? '100%' : fitMode() === 'width' ? `${zoom()}%` : 'none',
-                  "max-height": fitMode() === 'fit' ? 'calc(95vh - 120px)' : 'none',
-                  "width": fitMode() === 'width' ? `${zoom()}%` : fitMode() === 'actual' ? 'auto' : undefined,
-                  "transform": fitMode() === 'actual' ? `scale(${zoom() / 100})` : undefined,
-                  "transform-origin": "top center",
+                  "width": fitMode() === 'fit' ? 'auto' : `${zoom()}%`,
+                  "max-width": fitMode() === 'fit' ? '100vw' : 'none',
+                  "max-height": fitMode() === 'fit' ? 'calc(100vh - 140px)' : 'none',
+                  "min-width": fitMode() !== 'fit' ? '100vw' : undefined,
                 }}
               />
             </div>
-            <div class="fixed bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-center bg-dark-300/90 backdrop-blur-sm px-3 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl max-w-[95vw]">
-              <p class="text-white font-medium text-xs sm:text-sm truncate">{props.selectedFile!.name}</p>
+            <div class="fixed bottom-0 left-0 right-0 text-center bg-gradient-to-t from-black/90 via-black/70 to-transparent px-4 py-4 pt-8">
+              <p class="text-white font-medium text-sm truncate max-w-[90vw] mx-auto">{props.selectedFile!.name}</p>
               <p class="text-gray-400 text-xs mt-1">
                 <Show when={allImages().length > 1}>
-                  <span>{imageIndex() + 1} of {allImages().length}</span>
-                  <span class="mx-1 sm:mx-2">•</span>
+                  <span class="text-primary-400 font-medium">{imageIndex() + 1}</span>
+                  <span class="text-gray-500"> / {allImages().length}</span>
+                  <span class="mx-2 text-gray-600">•</span>
                 </Show>
-                <span class="text-gray-500 hidden sm:inline">← → navigate</span>
-                <span class="text-gray-500 sm:hidden">Swipe to navigate</span>
+                <span class="text-gray-500">Pinch to zoom • Swipe to navigate</span>
               </p>
             </div>
           </div>
