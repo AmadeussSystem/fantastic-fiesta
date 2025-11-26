@@ -419,9 +419,9 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
               {/* Zoom level indicator */}
               <span class="text-sm text-white font-bold w-14 text-center">{zoom()}%</span>
               
-              {/* Zoom in button - visible on mobile */}
+              {/* Zoom in button */}
               <button
-                class="p-2 rounded-full text-gray-300 hover:text-white hover:bg-dark-200 active:scale-90 transition-all"
+                class="p-2 rounded-full text-white hover:bg-white/20 active:scale-90 transition-all"
                 onClick={() => setZoom(z => Math.min(400, z + 25))}
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -430,38 +430,39 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
               </button>
               
               {/* Divider */}
-              <div class="w-px h-5 bg-gray-600 mx-1" />
+              <div class="w-px h-5 bg-white/30 mx-1" />
               
               {/* Fit button */}
               <button
-                class={`px-3 py-1.5 rounded-full text-xs font-medium transition-all active:scale-95 ${fitMode() === 'fit' && zoom() === 100 ? 'bg-primary-500 text-white' : 'text-gray-300 hover:text-white'}`}
+                class={`px-3 py-1.5 rounded-full text-xs font-bold transition-all active:scale-95 ${fitMode() === 'fit' && zoom() === 100 ? 'bg-primary-500 text-white' : 'text-white/80 hover:text-white'}`}
                 onClick={() => { setFitMode('fit'); setZoom(100); }}
               >
                 Fit
               </button>
             </div>
 
-            <div 
-              class="flex-1 overflow-auto flex items-start justify-center w-full pt-16 pb-20 px-0"
-            >
+            {/* Image container - full width scroll */}
+            <div class="w-full min-h-full flex justify-center pt-14 pb-24">
               <img
                 src={props.getFileUrl(props.selectedFile!.path)}
                 alt={props.selectedFile!.name}
-                class="bg-white select-none"
+                class="bg-white block"
                 draggable={false}
                 style={{
-                  "width": fitMode() === 'fit' ? 'auto' : `${zoom()}%`,
+                  "width": fitMode() === 'fit' ? 'auto' : `${zoom()}vw`,
                   "max-width": fitMode() === 'fit' ? '100vw' : 'none',
-                  "max-height": fitMode() === 'fit' ? 'calc(100vh - 140px)' : 'none',
-                  "min-width": fitMode() !== 'fit' ? '100vw' : undefined,
+                  "max-height": fitMode() === 'fit' ? 'calc(100vh - 120px)' : 'none',
+                  "object-fit": "contain",
                 }}
               />
             </div>
-            <div class="fixed bottom-0 left-0 right-0 text-center bg-gradient-to-t from-black/90 via-black/70 to-transparent px-4 py-4 pt-8">
-              <p class="text-white font-medium text-sm truncate max-w-[90vw] mx-auto">{props.selectedFile!.name}</p>
+            
+            {/* Bottom info bar */}
+            <div class="fixed bottom-0 left-0 right-0 text-center bg-gradient-to-t from-black via-black/80 to-transparent px-4 py-3 pt-10 z-20">
+              <p class="text-white font-medium text-sm truncate max-w-[85vw] mx-auto">{props.selectedFile!.name}</p>
               <p class="text-gray-400 text-xs mt-1">
                 <Show when={allImages().length > 1}>
-                  <span class="text-primary-400 font-medium">{imageIndex() + 1}</span>
+                  <span class="text-primary-400 font-bold">{imageIndex() + 1}</span>
                   <span class="text-gray-500"> / {allImages().length}</span>
                   <span class="mx-2 text-gray-600">•</span>
                 </Show>
