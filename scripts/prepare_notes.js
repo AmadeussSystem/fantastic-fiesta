@@ -135,8 +135,8 @@ async function generateCatalog(basePath, relativeRoot) {
             if (entry.isDirectory()) {
                 await walk(fullPath, nextRelPath);
             } else {
-                // Web-accessible path (force forward slashes)
-                const webPath = `/${relativeRoot}/${nextRelPath}`.replace(/\\/g, '/');
+                // Web-accessible path (force forward slashes) - relative path for Vite base support
+                const webPath = `${relativeRoot}/${nextRelPath}`.replace(/\\/g, '/');
 
                 // Determine parent folder for filtering
                 const parentDir = path.dirname(nextRelPath).replace(/\\/g, '/');
