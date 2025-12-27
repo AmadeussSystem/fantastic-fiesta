@@ -16,9 +16,9 @@ const FRONTEND_PUBLIC = path.join(PROJECT_ROOT, 'frontend', 'public');
 
 // Check for GitHub Actions checkout path first (from deploy.yml), then local path
 const OBSIDIAN_SOURCE = process.env.OBSIDIAN_PATH ||
-    (fs.existsSync(path.join(PROJECT_ROOT, 'obsidian-vault', 'Vault'))
-        ? path.join(PROJECT_ROOT, 'obsidian-vault', 'Vault')
-        : String.raw`C:\Users\FSOS\Documents\GitHub\Obsidian-Vault-Template\Vault`);
+    (fs.existsSync(path.join(PROJECT_ROOT, 'obsidian-vault'))
+        ? path.join(PROJECT_ROOT, 'obsidian-vault')
+        : String.raw`C:\Users\FSOS\Documents\GitHub\Obsidian-vault`);
 const SCRIBBLE_SOURCE = process.env.SCRIBBLE_PATH || path.join(PROJECT_ROOT, 'Scribble');
 
 const OBSIDIAN_DEST = path.join(FRONTEND_PUBLIC, 'obsidian');

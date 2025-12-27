@@ -24,7 +24,7 @@ jobs:
       - name: Checkout Obsidian Notes
         uses: actions/checkout@v4
         with:
-          repository: AmadeussSystem/Obsidian-Vault-Template
+          repository: AmadeussSystem/Obsidian-vault
           path: obsidian-vault
           token: ${{ secrets.GITHUB_TOKEN }}
 
