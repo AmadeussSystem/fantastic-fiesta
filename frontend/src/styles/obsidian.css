@@ -1,0 +1,208 @@
+/* Obsidian-like Theme Variables */
+:root {
+  --obsidian-bg-primary: #1e1e1e;
+  --obsidian-bg-secondary: #252526;
+  --obsidian-text-normal: #dcddde;
+  --obsidian-text-muted: #858585;
+  --obsidian-accent: #7b6cd6;
+  /* Default purple-ish accent */
+  --obsidian-border: #3e3e42;
+  --obsidian-code-bg: #1a1a1a;
+  --obsidian-h1: #ffffff;
+  --obsidian-h2: #f0f6fc;
+  --obsidian-h3: #f0f6fc;
+  --obsidian-link: #a29bfe;
+}
+
+.obsidian-theme {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Only apply default dark theme styling if no custom page class is present */
+/* Uses attribute selector to automatically detect ANY page-* class */
+.obsidian-theme:not([class*="page-"]) {
+  background-color: var(--obsidian-bg-primary);
+  color: var(--obsidian-text-normal);
+}
+
+/* Default h1 styling - uses variables so snippet CSS can override */
+.obsidian-theme h1,
+.obsidian-theme .markdown-body h1 {
+  font-size: 2em;
+  font-weight: 600;
+  color: var(--h1-color, var(--obsidian-h1));
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Cards and Boxes */
+.cards .markdown-body>* {
+  background: var(--obsidian-bg-secondary);
+  padding: 1em;
+  border-radius: 8px;
+  margin: 1em 0;
+  border: 1px solid var(--obsidian-border);
+}
+
+.box {
+  border: 2px solid var(--obsidian-accent);
+  padding: 2em;
+  border-radius: 12px;
+  background: var(--obsidian-bg-secondary);
+}
+
+/* Markdown body styling for rendered content */
+.markdown-body {
+  color: inherit;
+  /* Inherit from parent to respect page class colors */
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--obsidian-h1);
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  border-bottom: 1px solid var(--obsidian-border);
+  padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+  font-size: 1.5em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body li {
+  margin-top: 0.25em;
+}
+
+.markdown-body li+li {
+  margin-top: 0.25em;
+}
+
+.markdown-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--obsidian-code-bg);
+  border-radius: 3px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+}
+
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: var(--obsidian-code-bg);
+  border-radius: 6px;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body pre code {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body blockquote {
+  padding: 0 1em;
+  color: var(--obsidian-text-muted);
+  border-left: 0.25em solid var(--obsidian-accent);
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote> :first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote> :last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-top: 0;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid var(--obsidian-border);
+}
+
+.markdown-body table th {
+  font-weight: 600;
+  background-color: var(--obsidian-bg-secondary);
+}
+
+.markdown-body table tr {
+  background-color: transparent;
+  border-top: 1px solid var(--obsidian-border);
+}
+
+.markdown-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+}
+
+.markdown-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: var(--obsidian-border);
+  border: 0;
+}
+
+.markdown-body a {
+  color: var(--obsidian-link);
+  text-decoration: none;
+}
+
+.markdown-body a:hover {
+  text-decoration: underline;
+}

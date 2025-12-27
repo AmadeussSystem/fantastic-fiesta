@@ -1,0 +1,313 @@
+/*------------------------------------------------------------------------------
+
+Daily Note Themes by CyanVoxel v1.0.5
+Modified by baweaver
+
+These are a set of 7 main CSS classes that can be used to apply individual color
+schemes to daily notes for each day of the week.
+
+To customize the colors for each day, just swamp out the colors values under
+the main "day of the week" classes.
+
+The themes have been tweaked from the original to use HSL rather than RGB, and
+each successive day decrements the Hue by 50 while retaining the same saturation
+and luminosity.
+
+Shadows have increased saturation, lower luminosity, and are +10 hue from primary (warmer)
+Highlights have decreased saturation, higher luminosity, and are -10 hue from primary (colder)
+
+------------------------------------------------------------------------------*/
+:root {
+  --highlight: #ffffff;
+  --primary: #aaaaaa;
+  --dark: #333333;
+
+  --primary-font: "Helvetica Neue";
+  --secondary-font: "MonoLisa";
+  --mono-font: "MonoLisa";
+
+  --highlight-saturation: 50%;
+  --highlight-luminosity: 75%;
+
+  --primary-saturation: 60%;
+  --primary-luminosity: 50%;
+
+  --dark-saturation: 70%;
+  --dark-luminosity: 5%;
+}
+
+.daily {
+  --dark: var(--dark);
+
+  --text-normal: var(--highlight);
+  --text-muted: var(--highlight);
+  --text-faint: var(--highlight);
+  --checklist-done-color: var(--highlight);
+  --metadata-label-text-color: var(--highlight);
+  --metadata-input-text-color: var(--highlight);
+  --tag-color: var(--dark);
+  --tag-background: var(--primary);
+  --hr-color: var(--primary);
+  --blockquote-border-color: var(--primary);
+  --interactive-accent: var(--primary);
+  --collapse-icon-color-collapsed: var(--primary);
+  --checkbox-color: var(--primary);
+  --checkbox-marker-color: var(--dark);
+  --checkbox-color-hover: var(--highlight);
+  --checkbox-border-color: var(--highlight);
+  --list-marker-color: var(--highlight);
+  --code-background: black;
+  --code-normal: var(--primary);
+
+  --background-modifier-border-focus: var(--primary);
+  --background-modifier-border: color-mix(in srgb, var(--highlight) 60%, transparent);
+  --background-modifier-hover: color-mix(in srgb, var(--highlight) 60%, transparent);
+  --pill-cover-hover: color-mix(in srgb, var(--highlight) 60%, transparent);
+
+  color: var(--highlight);
+  background-color: var(--dark);
+}
+
+.sunday, .Sunday {
+  --primary-hue: 350;
+
+  --highlight: hsl(
+    calc(var(--primary-hue) - 10),
+    var(--highlight-saturation),
+    var(--highlight-luminosity)
+  );
+
+  --primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-luminosity)
+  );
+
+  --dark: hsl(
+    calc(var(--primary-hue) + 10),
+    var(--dark-saturation),
+    var(--dark-luminosity)
+  );
+}
+
+.monday, .Monday {
+  --primary-hue: 300;
+
+  --highlight: hsl(
+    calc(var(--primary-hue) - 10),
+    var(--highlight-saturation),
+    var(--highlight-luminosity)
+  );
+
+  --primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-luminosity)
+  );
+
+  --dark: hsl(
+    calc(var(--primary-hue) + 10),
+    var(--dark-saturation),
+    var(--dark-luminosity)
+  );
+}
+
+.tuesday, .Tuesday {
+  --primary-hue: 250;
+
+  --highlight: hsl(
+    calc(var(--primary-hue) - 10),
+    var(--highlight-saturation),
+    var(--highlight-luminosity)
+  );
+
+  --primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-luminosity)
+  );
+
+  --dark: hsl(
+    calc(var(--primary-hue) + 10),
+    var(--dark-saturation),
+    var(--dark-luminosity)
+  );
+}
+
+.wednesday, .Wednesday {
+  --primary-hue: 200;
+
+  --highlight: hsl(
+    calc(var(--primary-hue) - 10),
+    var(--highlight-saturation),
+    var(--highlight-luminosity)
+  );
+
+  --primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-luminosity)
+  );
+
+  --dark: hsl(
+    calc(var(--primary-hue) + 10),
+    var(--dark-saturation),
+    var(--dark-luminosity)
+  );
+}
+
+.thursday, .Thursday {
+  --primary-hue: 150;
+
+  --highlight: hsl(
+    calc(var(--primary-hue) - 10),
+    var(--highlight-saturation),
+    var(--highlight-luminosity)
+  );
+
+  --primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-luminosity)
+  );
+
+  --dark: hsl(
+    calc(var(--primary-hue) + 10),
+    var(--dark-saturation),
+    var(--dark-luminosity)
+  );
+}
+
+.friday, .Friday {
+  --primary-hue: 100;
+
+  --highlight: hsl(
+    calc(var(--primary-hue) - 10),
+    var(--highlight-saturation),
+    var(--highlight-luminosity)
+  );
+
+  --primary: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-luminosity)
+  );
+
+  --dark: hsl(
+    calc(var(--primary-hue) + 10),
+    var(--dark-saturation),
+    var(--dark-luminosity)
+  );
+}
+
+.saturday, .Saturday {
+  --primary-hue: 50;
+
+  --highlight: hsl(
+    calc(var(--primary-hue) - 10),
+    var(--highlight-saturation),
+    var(--highlight-luminosity)
+  );
+
+  --primary: hsl(
+    var(--primary-hue)
+    var(--primary-saturation),
+    var(--primary-luminosity)
+  );
+
+  --dark: hsl(
+    calc(var(--primary-hue) + 10),
+    var(--dark-saturation),
+    var(--dark-luminosity)
+  );
+}
+
+.daily .subtitle {
+  color: var(--highlight);
+  font-size: 32px;
+  font-family: var(--primary-font), var(--secondary-font), var(--mono-font);
+  font-style: italic;
+  padding: 0 !important;
+
+  margin-top: -0.5em;
+  margin-bottom: 0.5em;
+}
+
+.daily :is(h1, .HyperMD-header.HyperMD-header-1) {
+  color: var(--primary);
+  font-size: 60px;
+  font-family: var(--primary-font), var(--secondary-font), var(--mono-font);
+  padding: 0 !important;
+
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.daily :is(h2, .HyperMD-header.HyperMD-header-2) {
+  color: var(--highlight);
+  font-size: 40px;
+  font-family: var(--primary-font), var(--secondary-font), var(--mono-font);
+  padding: 0 !important;
+
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.daily :is(h3, .HyperMD-header.HyperMD-header-3) {
+  color: var(--primary);
+  font-size: 30px;
+  font-family: var(--primary-font), var(--secondary-font), var(--mono-font);
+  padding-top: 0;
+
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.daily :is(h4, .HyperMD-header.HyperMD-header-4) {
+  color: var(--highlight);
+  font-weight: 900;
+  font-size: 20px;
+  width: fit-content;
+  word-wrap: normal;
+
+  margin-top: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.daily p {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.daily :is(a:link, .cm-hmd-internal-link) {
+  color: var(--primary);
+  background: var(--dark);
+}
+
+.daily :is(a:hover, .cm-hmd-internal-link:hover) {
+  color: var(--dark);
+  background: var(--primary);
+}
+
+.daily hr {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.daily img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+:is(
+  .sunday, .Sunday,
+  .monday, .Monday,
+  .tuesday, .Tuesday,
+  .wednesday, .Wednesday,
+  .thursday, .Thursday,
+  .friday, .Friday,
+  .saturday, .Saturday
+) svg {
+  color: color-mix(in srgb, var(--highlight) 60%, transparent);
+}

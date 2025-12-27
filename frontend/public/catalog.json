@@ -1,0 +1,1763 @@
+{
+  "obsidian": [
+    {
+      "name": "00 Homepage.md",
+      "path": "/obsidian/00 - Maps of Content/00 Homepage.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "00 - Maps of Content"
+    },
+    {
+      "name": "01 Meetings.md",
+      "path": "/obsidian/00 - Maps of Content/01 Meetings.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "00 - Maps of Content"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/01 - Projects/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "01 - Projects"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/02 - Areas/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "02 - Areas"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/03 - Resources/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "03 - Resources"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/04 - Permanent/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "04 - Permanent"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/05 - Fleeting/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "05 - Fleeting"
+    },
+    {
+      "name": "2025-12-26.md",
+      "path": "/obsidian/06 - Periodic/00 - Daily/2025-12-26.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "06 - Periodic/00 - Daily"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/06 - Periodic/00 - Daily/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "06 - Periodic/00 - Daily"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/06 - Periodic/01 - Weekly/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "06 - Periodic/01 - Weekly"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/06 - Periodic/02 - Monthly/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "06 - Periodic/02 - Monthly"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/06 - Periodic/03 - Quarterly/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "06 - Periodic/03 - Quarterly"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/06 - Periodic/04 - Yearly/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "06 - Periodic/04 - Yearly"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/06 - Periodic/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "06 - Periodic"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/07 - Meetings/1-1s/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "07 - Meetings/1-1s"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/07 - Meetings/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "07 - Meetings"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/07 - Meetings/Standups/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "07 - Meetings/Standups"
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/08 - Entities/01 - People/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "08 - Entities/01 - People"
+    },
+    {
+      "name": "1-Untitled.base",
+      "path": "/obsidian/1-Untitled.base",
+      "type": "file",
+      "source": "obsidian",
+      "parent": ""
+    },
+    {
+      "name": "202512261933.md",
+      "path": "/obsidian/202512261933.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": ""
+    },
+    {
+      "name": "Placeholder.md",
+      "path": "/obsidian/98 - Archives/Placeholder.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "98 - Archives"
+    },
+    {
+      "name": "(Periodic) Daily Template.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/(Periodic) Daily Template.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "(Periodic) Monthly Template.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/(Periodic) Monthly Template.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "(Periodic) Weekly Template.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/(Periodic) Weekly Template.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "(TEMPLATE) Unique.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/(TEMPLATE) Unique.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "(ZK) Area Template.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/(ZK) Area Template.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "(ZK) Project Template.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/(ZK) Project Template.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "(ZK) Resource Template.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/(ZK) Resource Template.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "Meeting Template AUTO.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/Meeting Template AUTO.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "Meeting Template.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/Meeting Template.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "Person Template.md",
+      "path": "/obsidian/99 - Meta/00 - Templates/Person Template.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/00 - Templates"
+    },
+    {
+      "name": "requiem2_banner.jpg",
+      "path": "/obsidian/99 - Meta/Backgrounds/requiem2_banner.jpg",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/Backgrounds"
+    },
+    {
+      "name": "202401211512 Notebook CSS Classes.md",
+      "path": "/obsidian/99 - Meta/Preloaded Classes/202401211512 Notebook CSS Classes.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/Preloaded Classes"
+    },
+    {
+      "name": "202403091325 Daily Class Preload.md",
+      "path": "/obsidian/99 - Meta/Preloaded Classes/202403091325 Daily Class Preload.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/Preloaded Classes"
+    },
+    {
+      "name": "202403091325 General Tweaks CSS Classes.md",
+      "path": "/obsidian/99 - Meta/Preloaded Classes/202403091325 General Tweaks CSS Classes.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "99 - Meta/Preloaded Classes"
+    },
+    {
+      "name": "1-Placeholder.base",
+      "path": "/obsidian/scripts/1-Placeholder.base",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "scripts"
+    },
+    {
+      "name": "button.js",
+      "path": "/obsidian/scripts/js_engine/button.js",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "scripts/js_engine"
+    },
+    {
+      "name": "calendar_create_note_button.js",
+      "path": "/obsidian/scripts/js_engine/calendar_create_note_button.js",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "scripts/js_engine"
+    },
+    {
+      "name": "ics_table.js",
+      "path": "/obsidian/scripts/js_engine/ics_table.js",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "scripts/js_engine"
+    },
+    {
+      "name": "meeting_manager.js",
+      "path": "/obsidian/scripts/js_engine/meeting_manager.js",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "scripts/js_engine"
+    },
+    {
+      "name": "momentary.js",
+      "path": "/obsidian/scripts/templater/momentary.js",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "scripts/templater"
+    },
+    {
+      "name": "Untitled 1.base",
+      "path": "/obsidian/scripts/Untitled 1.base",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "scripts"
+    },
+    {
+      "name": "Untitled.base",
+      "path": "/obsidian/scripts/Untitled.base",
+      "type": "file",
+      "source": "obsidian",
+      "parent": "scripts"
+    },
+    {
+      "name": "Untitled.md",
+      "path": "/obsidian/Untitled.md",
+      "type": "file",
+      "source": "obsidian",
+      "parent": ""
+    }
+  ],
+  "scribble": [
+    {
+      "name": "2025-07-13 - Cycle Sort-01.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-13 - Cycle Sort-02.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-13 - Cycle Sort-03.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-13 - Cycle Sort-04.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-13 - Cycle Sort-05.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-13 - Cycle Sort-06.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-13 - Cycle Sort-07.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-07.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-13 - Cycle Sort-08.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-08.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-13 - Cycle Sort-09.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-09.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-13 - Cycle Sort-10.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/2025-07-13 - Cycle Sort-10.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "cycle_sort_final.pdf",
+      "path": "/scribble/DSAandPatterns/Arrays/Cycle Sort/cycle_sort_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Cycle Sort"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-01.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-02.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-03.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-04.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-05.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-06.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-07.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-07.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-08.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-08.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-09.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-09.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-10.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-10.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-11.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-11.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-12.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-12.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-07 - Merge Intervals-13.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/2025-07-07 - Merge Intervals-13.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "merge_intervals_final.pdf",
+      "path": "/scribble/DSAandPatterns/Arrays/Merge Intervals/merge_intervals_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Merge Intervals"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-01.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-02.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-03.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-04.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-05.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-06.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-07.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-07.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-08.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-08.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-09.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-09.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-10.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-10.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-11.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-11.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-12.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-12.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-13.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-13.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-14.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-14.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-15.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-15.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-16.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-16.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-07-10 - Modified Binary Search-17.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/2025-07-10 - Modified Binary Search-17.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "modified_binary_search_final.pdf",
+      "path": "/scribble/DSAandPatterns/Arrays/Modified Binary Search/modified_binary_search_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Modified Binary Search"
+    },
+    {
+      "name": "2025-09-17 - -02.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/2025-09-17 - -02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "2025-09-17 - -03.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/2025-09-17 - -03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "2025-09-17 - -04.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/2025-09-17 - -04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "2025-09-17 - Quicksart-01.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/2025-09-17 - Quicksart-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "2025-09-17 - Quicksart-02.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/2025-09-17 - Quicksart-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "2025-09-17 - Quicksart-03.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/2025-09-17 - Quicksart-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "2025-09-17 - Quicksart-04.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/2025-09-17 - Quicksart-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "2025-09-17 - Quicksart-05.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/2025-09-17 - Quicksart-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "2025-09-17 - Quicksart-06.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/2025-09-17 - Quicksart-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "quicksort_final.pdf",
+      "path": "/scribble/DSAandPatterns/Arrays/Quicksort/quicksort_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Quicksort"
+    },
+    {
+      "name": "2025-06-30-01.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Revision/2025-06-30-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Revision"
+    },
+    {
+      "name": "2025-06-30-02.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Revision/2025-06-30-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Revision"
+    },
+    {
+      "name": "2025-06-30-03.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Revision/2025-06-30-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Revision"
+    },
+    {
+      "name": "2025-06-30-04.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Revision/2025-06-30-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Revision"
+    },
+    {
+      "name": "revision_final.pdf",
+      "path": "/scribble/DSAandPatterns/Arrays/Revision/revision_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Revision"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-01.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-02.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-03.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-04.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-05.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-06.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-07.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-07.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-08.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-08.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-09.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-09.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-10.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-10.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-11.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-11.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-12 - Sliding Window-12.png",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/2025-06-12 - Sliding Window-12.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "avgContiguousSizeK.cpp",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/avgContiguousSizeK.cpp",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "avgContiguousSizeK.exe",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/avgContiguousSizeK.exe",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "avgContiguousSizeK.o",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/build/Debug/avgContiguousSizeK.o",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window/build/Debug"
+    },
+    {
+      "name": "maxSubArraySizeK.o",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/build/Debug/maxSubArraySizeK.o",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window/build/Debug"
+    },
+    {
+      "name": "outDebug.exe",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/build/Debug/outDebug.exe",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window/build/Debug"
+    },
+    {
+      "name": "smallestSubArrayWithGivenSum.o",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/build/Debug/smallestSubArrayWithGivenSum.o",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window/build/Debug"
+    },
+    {
+      "name": "longestSubstringWithDistinctChar.cpp",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/longestSubstringWithDistinctChar.cpp",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "maxSubArraySizeK.cpp",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/maxSubArraySizeK.cpp",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "sliding_window_final.pdf",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/sliding_window_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "smallestSubArrayWithGivenSum.cpp",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/smallestSubArrayWithGivenSum.cpp",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "smallestSubArrayWithGivenSum.exe",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/smallestSubArrayWithGivenSum.exe",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "Untitled-1.html",
+      "path": "/scribble/DSAandPatterns/Arrays/Sliding Window/Untitled-1.html",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/Sliding Window"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-01.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-02.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-03.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-04.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-05.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-06.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-07.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-07.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-08.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-08.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-09.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-09.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-10.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-10.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-11.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-11.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-12.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-12.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-13.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-13.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-14.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-14.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-15.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-15.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-16.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-16.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-17.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-17.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-18.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-18.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-06-09 - Two Pointers-19.png",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/2025-06-09 - Two Pointers-19.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "twopointers_final.pdf",
+      "path": "/scribble/DSAandPatterns/Arrays/TwoPointers/twopointers_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Arrays/TwoPointers"
+    },
+    {
+      "name": "2025-09-28 - Bit Manipulation-01.png",
+      "path": "/scribble/DSAandPatterns/Bit Manipulation/2025-09-28 - Bit Manipulation-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Bit Manipulation"
+    },
+    {
+      "name": "2025-09-28 - Bit Manipulation-02.png",
+      "path": "/scribble/DSAandPatterns/Bit Manipulation/2025-09-28 - Bit Manipulation-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Bit Manipulation"
+    },
+    {
+      "name": "2025-09-28 - Bit Manipulation-03.png",
+      "path": "/scribble/DSAandPatterns/Bit Manipulation/2025-09-28 - Bit Manipulation-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Bit Manipulation"
+    },
+    {
+      "name": "2025-09-28 - Bit Manipulation-04.png",
+      "path": "/scribble/DSAandPatterns/Bit Manipulation/2025-09-28 - Bit Manipulation-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Bit Manipulation"
+    },
+    {
+      "name": "bit_manipulation_final.pdf",
+      "path": "/scribble/DSAandPatterns/Bit Manipulation/bit_manipulation_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Bit Manipulation"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-01.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-02.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-03.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-04.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-05.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-06.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-07.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-07.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-08.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-08.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-09.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-09.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-10.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-10.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-10-13 - Cpp (fundamentals)-11.png",
+      "path": "/scribble/DSAandPatterns/CP/2025-10-13 - Cpp (fundamentals)-11.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "cp_final.pdf",
+      "path": "/scribble/DSAandPatterns/CP/cp_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP"
+    },
+    {
+      "name": "2025-11-29 - -01.png",
+      "path": "/scribble/DSAandPatterns/CP-4/2025-11-29 - -01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP-4"
+    },
+    {
+      "name": "2025-11-29 - -02.png",
+      "path": "/scribble/DSAandPatterns/CP-4/2025-11-29 - -02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP-4"
+    },
+    {
+      "name": "2025-11-29 - -03.png",
+      "path": "/scribble/DSAandPatterns/CP-4/2025-11-29 - -03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP-4"
+    },
+    {
+      "name": "2025-11-29 - -04.png",
+      "path": "/scribble/DSAandPatterns/CP-4/2025-11-29 - -04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP-4"
+    },
+    {
+      "name": "2025-12-03 - Cha Ter 3-01.png",
+      "path": "/scribble/DSAandPatterns/CP-4 Chapter-3/2025-12-03 - Cha Ter 3-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/CP-4 Chapter-3"
+    },
+    {
+      "name": "devops_final.pdf",
+      "path": "/scribble/DSAandPatterns/DevOps/devops_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/DevOps"
+    },
+    {
+      "name": "dsapatterns_final.pdf",
+      "path": "/scribble/DSAandPatterns/dsapatterns_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns"
+    },
+    {
+      "name": "2025-08-31 - DSA-01.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-02.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-03.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-04.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-05.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-06.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-07.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-07.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-08.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-08.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-09.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-09.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-10.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-10.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-11.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-11.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-12.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-12.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-13.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-13.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-18.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-18.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-19.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-19.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-20.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-20.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-31 - DSA-21.png",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/2025-08-31 - DSA-21.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "ineuron_dsa_final.pdf",
+      "path": "/scribble/DSAandPatterns/IneuRon DSA/ineuron_dsa_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/IneuRon DSA"
+    },
+    {
+      "name": "2025-08-24 - Linked Hist-01.png",
+      "path": "/scribble/DSAandPatterns/Linked List/2025-08-24 - Linked Hist-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Linked List"
+    },
+    {
+      "name": "2025-08-24 - Linked Hist-02.png",
+      "path": "/scribble/DSAandPatterns/Linked List/2025-08-24 - Linked Hist-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Linked List"
+    },
+    {
+      "name": "2025-08-24 - Linked Hist-03.png",
+      "path": "/scribble/DSAandPatterns/Linked List/2025-08-24 - Linked Hist-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Linked List"
+    },
+    {
+      "name": "2025-08-24 - Linked Hist-04.png",
+      "path": "/scribble/DSAandPatterns/Linked List/2025-08-24 - Linked Hist-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Linked List"
+    },
+    {
+      "name": "2025-08-24 - Linked Hist-05.png",
+      "path": "/scribble/DSAandPatterns/Linked List/2025-08-24 - Linked Hist-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Linked List"
+    },
+    {
+      "name": "linked_list_final.pdf",
+      "path": "/scribble/DSAandPatterns/Linked List/linked_list_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Linked List"
+    },
+    {
+      "name": "2025-07-30 - Algorithms (daa)-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-07-30 - Algorithms (daa)-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-07-30 - Algorithms (daa)-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-07-30 - Algorithms (daa)-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-07-30 - Algorithms (daa)-03.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-07-30 - Algorithms (daa)-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-08-03 - Analysis-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-08-03 - Analysis-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-08-03 - Analysis-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-08-03 - Analysis-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-08-03 - Analysis-03.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-08-03 - Analysis-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-08-03 - Analysis-04.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-08-03 - Analysis-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-09-11 - Practice Sheet. E-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-09-11 - Practice Sheet. E-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-09-11 - Practice Sheet. E-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-09-11 - Practice Sheet. E-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-09-11 - Practice Sheet. E-03.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-09-11 - Practice Sheet. E-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-09-11 - Practice Sheet. E-04.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-09-11 - Practice Sheet. E-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-09-11 - Practice Sheet. E-05.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-09-11 - Practice Sheet. E-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-09-11 - Practice Sheet. E-06.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-09-11 - Practice Sheet. E-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-09-11 - Practice Sheet. E-07.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-09-11 - Practice Sheet. E-07.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-09-11 - Practice Sheet. E-08.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-09-11 - Practice Sheet. E-08.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-09-11 - Practice Sheet. E-09.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/2025-09-11 - Practice Sheet. E-09.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "algorithms_final.pdf",
+      "path": "/scribble/DSAandPatterns/Semester-5/Algorithms/algorithms_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Algorithms"
+    },
+    {
+      "name": "2025-08-03 - -02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/2025-08-03 - -02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack"
+    },
+    {
+      "name": "2025-08-03 - -03.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/2025-08-03 - -03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack"
+    },
+    {
+      "name": "2025-08-03 - -04.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/2025-08-03 - -04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack"
+    },
+    {
+      "name": "2025-08-03 - -05.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/2025-08-03 - -05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack"
+    },
+    {
+      "name": "full_stack_final.pdf",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/full_stack_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack"
+    },
+    {
+      "name": "2025-08-02 html-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-02 html-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-02 html-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-02 html-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-03 - Week I-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-03 - Week I-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-03 - Week I-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-03 - Week I-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-03 - Week I-03.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-03 - Week I-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-03 - Week I-04.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-03 - Week I-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-03 - Week I-05.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-03 - Week I-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-03 - Week I-06.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-03 - Week I-06.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-03 - Week I-07.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-03 - Week I-07.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-03 - Week I-08.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/2025-08-03 - Week I-08.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "week1_final.pdf",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-1/week1_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-1"
+    },
+    {
+      "name": "2025-08-15 - Week 2-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-2/2025-08-15 - Week 2-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-2"
+    },
+    {
+      "name": "2025-08-15 - Week 2-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-2/2025-08-15 - Week 2-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-2"
+    },
+    {
+      "name": "2025-08-15 - Week 2-03.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-2/2025-08-15 - Week 2-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-2"
+    },
+    {
+      "name": "2025-08-15 - Week 2-04.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-2/2025-08-15 - Week 2-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-2"
+    },
+    {
+      "name": "2025-08-15 - Week 2-05.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-2/2025-08-15 - Week 2-05.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-2"
+    },
+    {
+      "name": "week2_final.pdf",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-2/week2_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-2"
+    },
+    {
+      "name": "2025-08-21 - 2 React Related Javascript Rereshee-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-3 React/2025-08-21 - 2 React Related Javascript Rereshee-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-3 React"
+    },
+    {
+      "name": "2025-08-21 - 2 React Related Javascript Rereshee-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-3 React/2025-08-21 - 2 React Related Javascript Rereshee-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-3 React"
+    },
+    {
+      "name": "2025-08-21 - 2 React Related Javascript Rereshee-03.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-3 React/2025-08-21 - 2 React Related Javascript Rereshee-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-3 React"
+    },
+    {
+      "name": "2025-08-21 - 2 React Related Javascript Rereshee-04.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-3 React/2025-08-21 - 2 React Related Javascript Rereshee-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-3 React"
+    },
+    {
+      "name": "week3_react_final.pdf",
+      "path": "/scribble/DSAandPatterns/Semester-5/Full Stack/Week-3 React/week3_react_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Full Stack/Week-3 React"
+    },
+    {
+      "name": "2025-08-07 - Perceptron Model All Breast Cancer Classie Cation-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-07 - Perceptron Model All Breast Cancer Classie Cation-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-07 - Perceptron Model All Breast Cancer Classie Cation-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-07 - Perceptron Model All Breast Cancer Classie Cation-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-07 - Perceptron Model All Breast Cancer Classie Cation-03.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-07 - Perceptron Model All Breast Cancer Classie Cation-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-07 - Perceptron Model All Breast Cancer Classie Cation-04.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-07 - Perceptron Model All Breast Cancer Classie Cation-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-12 - statistics for Machine Learning-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-12 - statistics for Machine Learning-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-12 - statistics for Machine Learning-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-12 - statistics for Machine Learning-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-12 - statistics for Machine Learning-03.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-12 - statistics for Machine Learning-03.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-12 - statistics for Machine Learning-04.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-12 - statistics for Machine Learning-04.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-12 - Statistics Our Machine Heaunin-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-12 - Statistics Our Machine Heaunin-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-12 - Statistics Our Machine Heaunin-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-12 - Statistics Our Machine Heaunin-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-21 - Rl Education Tutor-01.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-21 - Rl Education Tutor-01.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "2025-08-21 - Rl Education Tutor-02.png",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/2025-08-21 - Rl Education Tutor-02.png",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    },
+    {
+      "name": "machine_learning_final.pdf",
+      "path": "/scribble/DSAandPatterns/Semester-5/Machine Learning/machine_learning_final.pdf",
+      "type": "file",
+      "source": "scribble",
+      "parent": "DSAandPatterns/Semester-5/Machine Learning"
+    }
+  ]
+}
