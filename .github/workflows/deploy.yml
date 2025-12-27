@@ -39,6 +39,12 @@ jobs:
         working-directory: frontend
         run: npm ci
 
+      - name: Prepare Notes
+        run: node scripts/prepare_notes.js
+        env:
+          OBSIDIAN_PATH: ${{ github.workspace }}/obsidian-vault
+          SCRIBBLE_PATH: ${{ github.workspace }}/Scribble
+
       - name: Build
         working-directory: frontend
         run: npm run build
