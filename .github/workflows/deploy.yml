@@ -3,7 +3,14 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'Scribble/**'
+      - 'frontend/**'
+      - 'scripts/**'
+      - '.github/workflows/deploy.yml'
   workflow_dispatch:
+  repository_dispatch:
+    types: [obsidian-notes-updated]
 
 permissions:
   contents: read
