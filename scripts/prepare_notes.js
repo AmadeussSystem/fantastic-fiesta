@@ -18,7 +18,7 @@ const FRONTEND_PUBLIC = path.join(PROJECT_ROOT, 'frontend', 'public');
 const OBSIDIAN_SOURCE = process.env.OBSIDIAN_PATH ||
     (fs.existsSync(path.join(PROJECT_ROOT, 'obsidian-vault'))
         ? path.join(PROJECT_ROOT, 'obsidian-vault')
-        : String.raw`C:\Users\FSOS\Documents\GitHub\Obsidian-vault`);
+        : String.raw`C:\Users\FSOS\Documents\GitHub\Obsidian-Vault-Template\Vault`);
 const SCRIBBLE_SOURCE = process.env.SCRIBBLE_PATH || path.join(PROJECT_ROOT, 'Scribble');
 
 const OBSIDIAN_DEST = path.join(FRONTEND_PUBLIC, 'obsidian');
@@ -90,6 +90,26 @@ async function sanitizeFrontmatter(content) {
     return lastFrontmatter.fullMatch + cleanedContent;
 }
 
+// Convert Obsidian wiki-links to standard markdown
+function convertWikiLinksToMarkdown(content, relativePathFromNote) {
+    // Convert image wiki-links: ![[image.png]] -> ![image](path/to/image.png)
+    // The relativePathFromNote is the path from the note's location to the attachments folder
+
+    const wikiLinkPattern = /!\[\[([^\]]+)\]\]/g;
+
+    return content.replace(wikiLinkPattern, (match, filename) => {
+        // Clean the filename (remove any alt text after |)
+        const cleanFilename = filename.split('|')[0].trim();
+
+        // Construct the path to the attachments folder
+        // All images are in "99 - Meta/attachments/" or "99 - Meta/Backgrounds/"
+        const imagePath = `${relativePathFromNote}/${cleanFilename}`;
+
+        // Return standard markdown image syntax
+        return `![${cleanFilename}](${imagePath})`;
+    });
+}
+
 
 async function copyDir(src, dest) {
     await mkdir(dest, { recursive: true });
@@ -108,10 +128,30 @@ async function copyDir(src, dest) {
         if (entry.isDirectory()) {
             await copyDir(srcPath, destPath);
         } else if (entry.name.endsWith('.md')) {
-            // For markdown files, sanitize frontmatter
-            const content = await readFile(srcPath, 'utf-8');
-            const sanitized = await sanitizeFrontmatter(content);
-            await writeFile(destPath, sanitized, 'utf-8');
+            // For markdown files, sanitize frontmatter and convert wiki-links
+            let content = await readFile(srcPath, 'utf-8');
+            content = await sanitizeFrontmatter(content);
+
+            // Convert wiki-links to absolute paths from the public root
+            // Since images are in public/obsidian/99 - Meta/attachments or public/obsidian/99 - Meta/Backgrounds
+            // We use paths relative to the `obsidian` folder root
+            // Note: Include /fantastic-fiesta/ base path for GitHub Pages deployment
+            content = content.replace(/!\[\[([^\]]+)\]\]/g, (match, filename) => {
+                const cleanFilename = filename.split('|')[0].trim();
+                // URL-encode the path components so markdown parser can handle spaces
+                let imagePath;
+                // If it's a banner image, it's likely in Backgrounds
+                if (cleanFilename.includes('banner') || cleanFilename.includes('background')) {
+                    // Use absolute path from obsidian root with base path
+                    imagePath = `/fantastic-fiesta/obsidian/${encodeURIComponent('99 - Meta')}/${encodeURIComponent('Backgrounds')}/${encodeURIComponent(cleanFilename)}`;
+                } else {
+                    // Otherwise, assume it's in attachments
+                    imagePath = `/fantastic-fiesta/obsidian/${encodeURIComponent('99 - Meta')}/${encodeURIComponent('attachments')}/${encodeURIComponent(cleanFilename)}`;
+                }
+                return `![${cleanFilename}](${imagePath})`;
+            });
+
+            await writeFile(destPath, content, 'utf-8');
         } else {
             // For other files, just copy
             await copyFile(srcPath, destPath);
