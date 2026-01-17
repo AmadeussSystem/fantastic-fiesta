@@ -7,7 +7,7 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 # ─── Config ───────────────────────────────────────────────────────
-REPO_PATH = r"C:\Users\lone\Documents\fantastic-fiesta"
+REPO_PATH = r"C:\Users\FSOS\Documents\fantastic-fiesta"
 GIT_COMMIT_MESSAGE = "Auto-update handwritten notes"
 DEBOUNCE_DELAY = 10           # seconds after last change before sync
 PERIODIC_SYNC_INTERVAL = 60   # seconds (always try a sync periodically)
