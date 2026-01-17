@@ -50,10 +50,12 @@ def main():
     if not os.path.exists(PYTHON_PATH):
         print(f"[ERROR] Python not found at: {PYTHON_PATH}")
         print("[ERROR] Please check the PYTHON_PATH in the script")
+        input("Press Enter to exit...")
         return
     if not os.path.exists(SYNC_SCRIPT):
         print(f"[ERROR] Sync script not found at: {SYNC_SCRIPT}")
         print("[ERROR] Please check the SYNC_SCRIPT in the script")
+        input("Press Enter to exit...")
         return
 
     while True:
@@ -106,6 +108,12 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
+        print("\n[Monitor] Shutting down...")
         if sync_process is not None and sync_process.poll() is None:
             sync_process.terminate()
             sync_process.wait()
+    except Exception as e:
+        print(f"\n[ERROR] Unexpected error: {e}")
+        import traceback
+        traceback.print_exc()
+        input("Press Enter to exit...")

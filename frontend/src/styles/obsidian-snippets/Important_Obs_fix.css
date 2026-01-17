@@ -1,0 +1,11 @@
+/* 1. Remove the bottom Status Bar */
+.status-bar {
+    display: none !important;
+}
+
+/* 2. Increase the Writing Width */
+/* This adjusts the width variable directly. 
+   You can change '90%' to a pixel value (e.g., 1200px) or 100% */
+body {
+    --file-line-width: 90% !important; 
+}

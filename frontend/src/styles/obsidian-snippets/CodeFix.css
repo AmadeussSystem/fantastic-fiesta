@@ -1,0 +1,11 @@
+/* Force Code Files plugin to use JetBrains Mono */
+.monaco-editor, 
+.monaco-editor .inputarea,
+.monaco-editor .view-lines {
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Optional: Enable Font Ligatures (arrows, !=, etc.) */
+.monaco-editor .view-lines {
+    font-variant-ligatures: normal !important;
+}
