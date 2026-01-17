@@ -1,0 +1,40 @@
+# Large media files - exclude videos and PDFs from git
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.pdf
+
+# Obsidian vault - exclude from git (too large with videos/PDFs)
+frontend/public/obsidian/
+
+# Keep only scribble PNG files, exclude everything else
+frontend/public/scribble/**/*
+!frontend/public/scribble/**/*.png
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+monitor.log
+
+# Node modules
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
