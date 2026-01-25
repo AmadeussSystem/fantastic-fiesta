@@ -6,7 +6,7 @@ import sys
 
 # ─── Paths ─────────────────────────────────────────────────────────
 SYNC_SCRIPT = r"C:\Users\FSOS\Documents\fantastic-fiesta\git_auto_sync.py"
-PYTHON_PATH = r"C:\Users\FSOS\AppData\Local\Programs\Python\Python311\python.exe"
+PYTHON_PATH = r"C:\Users\FSOS\AppData\Local\Programs\Python\Python310\python.exe"
 
 NOTE_APP_NAME = "Scrble Ink"
 NOTE_APP_KEYWORD = "scrble"
