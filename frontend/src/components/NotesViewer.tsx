@@ -391,7 +391,7 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
                         <img
                           src={props.getFileUrl(item.path)}
                           alt={item.name}
-                          class="w-full h-full object-cover"
+                          class="w-full h-full object-contain"
                           loading="lazy"
                           onError={(e) => {
                             (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='1'%3E%3Crect x='2' y='3' width='20' height='18' rx='2'/%3E%3Cline x1='2' y1='8' x2='22' y2='8'/%3E%3Cline x1='2' y1='13' x2='22' y2='13'/%3E%3Cline x1='2' y1='18' x2='22' y2='18'/%3E%3C/svg%3E";
