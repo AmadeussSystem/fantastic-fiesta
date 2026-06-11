@@ -1,4 +1,5 @@
 import { Component } from 'solid-js';
+import { repoUrl } from '../config';
 
 const Footer: Component = () => {
   const currentYear = new Date().getFullYear();
@@ -6,12 +7,12 @@ const Footer: Component = () => {
   const links = {
     resources: [
       { name: 'Documentation', href: '#' },
-      { name: 'GitHub Repo', href: 'https://github.com/AmadeussSystem/fantastic-fiesta' },
+      { name: 'GitHub Repo', href: repoUrl() },
       { name: 'Roadmap', href: '#roadmap' },
     ],
     community: [
-      { name: 'GitHub Discussions', href: 'https://github.com/AmadeussSystem/fantastic-fiesta/discussions' },
-      { name: 'Issues', href: 'https://github.com/AmadeussSystem/fantastic-fiesta/issues' },
+      { name: 'GitHub Discussions', href: `${repoUrl()}/discussions` },
+      { name: 'Issues', href: `${repoUrl()}/issues` },
     ],
     topics: [
       { name: 'Arrays', href: '#' },
@@ -39,7 +40,7 @@ const Footer: Component = () => {
             </p>
             <div class="flex items-center gap-3">
               <a
-                href="https://github.com/AmadeussSystem/fantastic-fiesta"
+                href={repoUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-10 h-10 rounded-lg bg-dark-200 flex items-center justify-center text-gray-400 hover:text-white hover:bg-dark-100 transition-all duration-300"

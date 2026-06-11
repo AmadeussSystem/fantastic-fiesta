@@ -1,4 +1,5 @@
 import { Component, createSignal, onMount } from 'solid-js';
+import { repoUrl } from '../config';
 
 const Hero: Component = () => {
   const [visible, setVisible] = createSignal(false);
@@ -57,7 +58,7 @@ const Hero: Component = () => {
               <span class="i-carbon-arrow-right group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="https://github.com/AmadeussSystem/fantastic-fiesta"
+              href={repoUrl()}
               target="_blank"
               rel="noopener noreferrer"
               class="btn-secondary flex items-center gap-2"

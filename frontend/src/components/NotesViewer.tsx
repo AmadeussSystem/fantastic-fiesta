@@ -1,5 +1,6 @@
 import { Component, For, Show, createSignal, createEffect, onMount } from 'solid-js';
 import type { FileItem } from '../App';
+import { apiUrl } from '../config';
 
 interface NotesViewerProps {
   currentPath: string;
@@ -66,6 +67,7 @@ const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 768;
 const NotesViewer: Component<NotesViewerProps> = (props) => {
   const [items, setItems] = createSignal<FileItem[]>([]);
   const [loading, setLoading] = createSignal(true);
+  const [error, setError] = createSignal<string | null>(null);
   const [imageIndex, setImageIndex] = createSignal(0);
   const [allImages, setAllImages] = createSignal<FileItem[]>([]);
   // Default 150% for mobile, 100% for desktop
@@ -82,8 +84,7 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   const fetchDirectoryContents = async (path: string) => {
     setLoading(true);
     try {
-      const apiUrl = `https://api.github.com/repos/AmadeussSystem/fantastic-fiesta/contents/${path}`;
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl(path));
       
       if (!response.ok) {
         throw new Error('Failed to fetch');
@@ -112,8 +113,9 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
         const images = fileItems.filter(f => f.type === 'image');
         setAllImages(images);
       }
-    } catch (error) {
-      console.error('Error fetching directory:', error);
+    } catch (err: any) {
+      console.error('Error fetching directory:', err);
+      setError(err?.message || 'Failed to load notes. Check your connection.');
       setItems([]);
     } finally {
       setLoading(false);
@@ -121,6 +123,7 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
   };
 
   createEffect(() => {
+    setError(null);
     fetchDirectoryContents(props.currentPath);
   });
 
@@ -336,12 +339,35 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
       {/* Content */}
       <div class="p-3 sm:p-6">
         <Show when={loading()}>
-          <div class="flex items-center justify-center py-20">
-            <div class="w-8 h-8 border-2 border-primary-500 border-t-transparent rounded-full animate-spin" />
+          {/* Skeleton loading cards */}
+          <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
+            <For each={Array.from({ length: 8 })}>
+              {() => (
+                <div class="p-2 sm:p-3 rounded-lg sm:rounded-xl bg-dark-300/30 animate-pulse">
+                  <div class="w-full aspect-[3/4] rounded-md sm:rounded-lg bg-dark-200/50 mb-2 sm:mb-3" />
+                  <div class="h-4 bg-dark-200/50 rounded w-3/4 mx-auto" />
+                </div>
+              )}
+            </For>
           </div>
         </Show>
 
-        <Show when={!loading() && items().length === 0}>
+        <Show when={!loading() && error()}>
+          <div class="flex flex-col items-center justify-center py-20 text-gray-400">
+            <svg class="w-16 h-16 mb-4 text-red-400/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+            <p class="mb-2">{error()}</p>
+            <button
+              class="px-4 py-2 rounded-lg bg-primary-500/20 text-primary-400 hover:bg-primary-500/30 transition-colors"
+              onClick={() => { setError(null); fetchDirectoryContents(props.currentPath); }}
+            >
+              Retry
+            </button>
+          </div>
+        </Show>
+
+        <Show when={!loading() && !error() && items().length === 0}>
           <div class="flex flex-col items-center justify-center py-20 text-gray-400">
             <svg class="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
@@ -350,7 +376,7 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
           </div>
         </Show>
 
-        <Show when={!loading() && items().length > 0}>
+        <Show when={!loading() && !error() && items().length > 0}>
           {/* Grid View */}
           <Show when={props.viewMode === 'grid'}>
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
@@ -367,6 +393,9 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
                           alt={item.name}
                           class="w-full h-full object-cover"
                           loading="lazy"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='1'%3E%3Crect x='2' y='3' width='20' height='18' rx='2'/%3E%3Cline x1='2' y1='8' x2='22' y2='8'/%3E%3Cline x1='2' y1='13' x2='22' y2='13'/%3E%3Cline x1='2' y1='18' x2='22' y2='18'/%3E%3C/svg%3E";
+                          }}
                         />
                       </div>
                     </Show>
@@ -400,6 +429,9 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
                           alt={item.name}
                           class="w-full h-full object-cover"
                           loading="lazy"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='1'%3E%3Crect x='2' y='3' width='20' height='18' rx='2'/%3E%3Cline x1='2' y1='8' x2='22' y2='8'/%3E%3Cline x1='2' y1='13' x2='22' y2='13'/%3E%3Cline x1='2' y1='18' x2='22' y2='18'/%3E%3C/svg%3E";
+                          }}
                         />
                       </div>
                     </Show>
@@ -517,6 +549,10 @@ const NotesViewer: Component<NotesViewerProps> = (props) => {
                       class="bg-white block mb-4"
                       draggable={false}
                       loading={index() < 3 ? "eager" : "lazy"}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.minHeight = '200px';
+                        (e.target as HTMLImageElement).src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='1'%3E%3Crect x='2' y='3' width='20' height='18' rx='2'/%3E%3Cline x1='2' y1='8' x2='22' y2='8'/%3E%3Cline x1='2' y1='13' x2='22' y2='13'/%3E%3Cline x1='2' y1='18' x2='22' y2='18'/%3E%3C/svg%3E";
+                      }}
                       style={{
                         "width": `${zoom()}vw`,
                         "max-width": "none",

@@ -14,17 +14,28 @@ frontend/public/scribble/**/*
 
 # Python
 __pycache__/
+*.pyc
+*.pyo
+*.pyd
 *.py[cod]
 *$py.class
 *.so
 .Python
-build/
-dist/
 *.egg-info/
+*.spec
 
-# Logs
-*.log
+# Build artifacts (compiled binaries should not be in source control)
+dist/
+build/
+output/
+
+# Runtime outputs
 monitor.log
+*.log
+
+# Config with secrets / local overrides
+.env
+config.local.json
 
 # Node modules
 node_modules/

@@ -1,4 +1,5 @@
 import { Component, createSignal, Show } from 'solid-js';
+import { GITHUB_CONFIG, rawUrl } from './config';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import NotesViewer from './components/NotesViewer';
@@ -9,14 +10,14 @@ export interface FileItem {
   type: 'folder' | 'image' | 'pdf' | 'code' | 'other';
 }
 
-// GitHub raw content base URL
-const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/AmadeussSystem/fantastic-fiesta/main';
+// GitHub raw content URL is now driven by config.ts
 
 const App: Component = () => {
   const [currentPath, setCurrentPath] = createSignal('Scribble');
   const [selectedFile, setSelectedFile] = createSignal<FileItem | null>(null);
   const [sidebarOpen, setSidebarOpen] = createSignal(true);
   const [viewMode, setViewMode] = createSignal<'grid' | 'list'>('grid');
+  const [lastSynced, setLastSynced] = createSignal<Date | null>(null);
 
   const breadcrumbs = () => {
     const parts = currentPath().split('/');
@@ -39,7 +40,7 @@ const App: Component = () => {
     }
   };
 
-  const getFileUrl = (path: string) => `${GITHUB_RAW_BASE}/${path.split('/').map(p => encodeURIComponent(p)).join('/')}`;
+  const getFileUrl = (path: string) => rawUrl(path.split('/').map(p => encodeURIComponent(p)).join('/'));
 
   return (
     <div class="min-h-screen bg-dark-500 text-white flex flex-col">

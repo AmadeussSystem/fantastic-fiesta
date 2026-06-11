@@ -1,4 +1,5 @@
 import { Component, For, createSignal, createEffect, Show } from 'solid-js';
+import { apiUrl } from '../config';
 
 interface SidebarProps {
   currentPath: string;
@@ -13,8 +14,7 @@ interface FolderNode {
 // Fetch folder contents from GitHub API
 const fetchFolderContents = async (path: string): Promise<FolderNode[]> => {
   try {
-    const apiUrl = `https://api.github.com/repos/AmadeussSystem/fantastic-fiesta/contents/${path}`;
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl(path));
     
     if (!response.ok) return [];
     

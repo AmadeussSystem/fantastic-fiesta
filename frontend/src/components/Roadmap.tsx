@@ -1,4 +1,8 @@
 import { Component, For, createSignal, onMount } from 'solid-js';
+import { GITHUB_CONFIG } from '../config';
+
+const treeUrl = (path: string) =>
+  `https://github.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/tree/${GITHUB_CONFIG.branch}/${path}`;
 
 interface Topic {
   name: string;
@@ -19,13 +23,13 @@ const roadmapData: Phase[] = [
     description: 'Build a strong foundation with basic data structures and techniques',
     gradient: 'from-accent-green to-accent-cyan',
     topics: [
-      { name: 'Revision', completed: true, link: 'https://github.com/AmadeussSystem/fantastic-fiesta/tree/main/Scribble/DSA%26Patterns/Arrays/Revision' },
-      { name: 'Two Pointers', completed: true, link: 'https://github.com/AmadeussSystem/fantastic-fiesta/tree/main/Scribble/DSA%26Patterns/Arrays/TwoPointers' },
-      { name: 'Sliding Window', completed: true, link: 'https://github.com/AmadeussSystem/fantastic-fiesta/tree/main/Scribble/DSA%26Patterns/Arrays/Sliding%20Window' },
+      { name: 'Revision', completed: true, link: treeUrl('Scribble/DSA%26Patterns/Arrays/Revision') },
+      { name: 'Two Pointers', completed: true, link: treeUrl('Scribble/DSA%26Patterns/Arrays/TwoPointers') },
+      { name: 'Sliding Window', completed: true, link: treeUrl('Scribble/DSA%26Patterns/Arrays/Sliding%20Window') },
       { name: 'Stack & Queue', completed: true },
       { name: 'Hash Table', completed: false },
       { name: 'Binary Search', completed: false },
-      { name: 'Modified Binary Search', completed: true, link: 'https://github.com/AmadeussSystem/fantastic-fiesta/tree/main/Scribble/DSA%26Patterns/Arrays/Modified%20Binary%20Search' },
+      { name: 'Modified Binary Search', completed: true, link: treeUrl('Scribble/DSA%26Patterns/Arrays/Modified%20Binary%20Search') },
     ],
   },
   {
@@ -37,8 +41,8 @@ const roadmapData: Phase[] = [
       { name: 'Quicksort', completed: true },
       { name: 'Counting Sort', completed: true },
       { name: 'Heap Sort', completed: false },
-      { name: 'Merge Intervals', completed: true, link: 'https://github.com/AmadeussSystem/fantastic-fiesta/tree/main/Scribble/DSA%26Patterns/Arrays/Merge%20Intervals' },
-      { name: 'Cyclic Sort', completed: true, link: 'https://github.com/AmadeussSystem/fantastic-fiesta/tree/main/Scribble/DSA%26Patterns/Arrays/Cycle%20Sort' },
+      { name: 'Merge Intervals', completed: true, link: treeUrl('Scribble/DSA%26Patterns/Arrays/Merge%20Intervals') },
+      { name: 'Cyclic Sort', completed: true, link: treeUrl('Scribble/DSA%26Patterns/Arrays/Cycle%20Sort') },
       { name: 'Linked Lists', completed: false },
     ],
   },

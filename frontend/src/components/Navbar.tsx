@@ -1,4 +1,5 @@
 import { Component } from 'solid-js';
+import { repoUrl } from '../config';
 
 interface NavbarProps {
   sidebarOpen: boolean;
@@ -45,7 +46,7 @@ const Navbar: Component<NavbarProps> = (props) => {
 
           {/* GitHub link */}
           <a
-            href="https://github.com/AmadeussSystem/fantastic-fiesta"
+            href={repoUrl()}
             target="_blank"
             rel="noopener noreferrer"
             class="p-2 rounded-lg hover:bg-dark-200 transition-colors text-gray-400 hover:text-white"
