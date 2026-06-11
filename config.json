@@ -1,0 +1,9 @@
+{
+  "_comment": "Edit these values to match your machine. repo_path can also be set via SCRBLE_REPO_PATH env var. Leave repo_path empty to use the script's own directory (correct default for a cloned repo).",
+  "repo_path": "",
+  "debounce_delay": 10,
+  "periodic_sync_interval": 60,
+  "commit_message_prefix": "Auto-update handwritten notes",
+  "git_user_name": "",
+  "git_user_email": ""
+}
