@@ -15,7 +15,7 @@ export interface FileItem {
 const App: Component = () => {
   const [currentPath, setCurrentPath] = createSignal('Scribble');
   const [selectedFile, setSelectedFile] = createSignal<FileItem | null>(null);
-  const [sidebarOpen, setSidebarOpen] = createSignal(true);
+  const [sidebarOpen, setSidebarOpen] = createSignal(typeof window !== 'undefined' && window.innerWidth >= 1024);
   const [viewMode, setViewMode] = createSignal<'grid' | 'list'>('grid');
   const [lastSynced, setLastSynced] = createSignal<Date | null>(null);
 
