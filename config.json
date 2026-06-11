@@ -4,6 +4,6 @@
   "debounce_delay": 10,
   "periodic_sync_interval": 60,
   "commit_message_prefix": "Auto-update handwritten notes",
-  "git_user_name": "",
-  "git_user_email": ""
+  "git_user_name": "AmadeussSystem",
+  "git_user_email": "AmadeussSystem@users.noreply.github.com"
 }
